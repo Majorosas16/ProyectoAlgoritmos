@@ -1,0 +1,1 @@
+(()=>{"use strict";var e;console.log(3),function(e){e.Red="Rojo",e.Green="Verde",e.Blue="Azul"}(e||(e={}));let o=e.Blue;console.log(o)})();
