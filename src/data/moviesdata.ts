@@ -1,4 +1,4 @@
-const moviesdata = [
+export const moviesdata = [
     {
         id: 1,
         category: 'movie',
