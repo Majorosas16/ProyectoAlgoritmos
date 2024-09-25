@@ -1,4 +1,4 @@
-const seriesdata = [
+export const seriesdata = [
     {
         id: 1,
         category: 'serie',

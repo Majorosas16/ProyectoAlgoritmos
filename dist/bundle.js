@@ -1,1 +1,1 @@
-(()=>{"use strict";var e;console.log(3),function(e){e.Red="Rojo",e.Green="Verde",e.Blue="Azul"}(e||(e={}));let o=e.Blue;console.log(o)})();
+(()=>{"use strict";class e extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.render()}render(){this.shadowRoot&&(this.shadowRoot.innerHTML="\n            <nav-component></nav-component>\n            ")}}customElements.define("app-container",e)})();
