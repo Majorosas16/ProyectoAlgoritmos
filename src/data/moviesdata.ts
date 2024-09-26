@@ -328,5 +328,46 @@ export const moviesdata = [
             posterH: 'https://i.ytimg.com/vi/dXyD1AgnK7s/maxresdefault.jpg',
         }
     },
+    {
+        id: 16,
+        category: 'movie',
+        name: 'The Batman',
+        description: 'When a sadistic killer leaves behind a trail of cryptic clues, Gotham’s vigilante detective embarks on a personal investigation, uncovering corruption that connects to his own family during his hunt for the killer.',
+        releaseDate: {
+            month: "March",
+            year: 2022
+        },
+        director: 'Matt Reeves',
+        genre: 'Action, Crime, Drama',
+        ageRate: 'PG-13',
+        trailer: 'https://www.youtube.com/watch?v=fWQrd6cwJ0A',
+        images: {
+            poster1: 'https://www.dondeir.com/wp-content/uploads/2020/01/the-batman-2022-poster.jpg',
+            poster2: 'https://image.tmdb.org/t/p/original/74xTEgt7R36Fpooo50r9T25onhq.jpg',
+            poster3: 'https://cdn.posteritati.com/posters/000/000/067/869/the-batman-md-web.jpg',
+            posterH: 'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2022/01/batman-2596985.jpg?tf=3840x'
+        }
+    },
+
+    {
+        id: 17,
+        category: 'movie',
+        name: 'Interstellar',
+        description: 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity’s survival when Earth becomes uninhabitable.',
+        releaseDate: {
+            month: "November",
+            year: 2014
+        },
+        director: 'Christopher Nolan',
+        genre: 'Adventure, Drama, Sci-Fi',
+        ageRate: 'PG-13',
+        trailer: 'https://www.youtube.com/watch?v=UoSSbmD9vqc',
+        images: {
+            poster1: 'https://www.originalfilmart.com/cdn/shop/products/interstellar_2014_original_film_art_5000x.jpg?v=1595564403',
+            poster2: 'https://image.tmdb.org/t/p/original/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg',
+            poster3: 'https://i.ebayimg.com/00/s/MTYwMFgxMDI0/z/A5MAAOSwr~lYtAa9/$_57.JPG?set_id=8800005007',
+            posterH: 'https://www.hollywoodreporter.com/wp-content/uploads/2014/09/interstellar_poster_0.jpg'
+        }
+    }
 
 ]

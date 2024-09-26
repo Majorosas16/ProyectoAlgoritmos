@@ -333,4 +333,28 @@ export const seriesdata = [
         }
     },
 
+    {
+        id: 16,
+        category: 'serie',
+        name: 'Game of Thrones',
+        description: 'Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.',
+        releaseDateFirstEpisode: {
+            month: "April",
+            year: 2011
+        },
+        createdBy: 'David Benioff, D. B. Weiss',
+        seasons: '8',
+        episodes: '73',
+        genre: 'Fantasy, Drama',
+        ageRate: '18+',
+        trailer: 'https://www.youtube.com/watch?v=KPLWWIOCOOQ',
+        images: {
+            poster1: 'https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781608872190/game-of-thrones-9781608872190_hr.jpg',
+            poster2: 'https://image.tmdb.org/t/p/original/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg',
+            poster3: 'https://static.posters.cz/image/1300/art-photo/game-of-thrones-season-1-key-art-i135455.jpg',
+            posterH: 'https://images.wallpapersden.com/image/download/game-of-thrones-poster-wallpapers_aWVlbGqUmZqaraWkpJRobWllrWdma2U.jpg'
+        }
+    }
+    
+
 ]

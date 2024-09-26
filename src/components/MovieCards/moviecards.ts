@@ -1,29 +1,17 @@
 export enum Attribute {
     "image" = "image",
-    "name" = "name",
-    "uid" = "uid",
-    "age" = "age",
-    "gender" = "gender",
-    "area" = "area",
-    "position" = "position",
-    "timeincompany" = "timeincompany",
-    "xp" = "xp"
+    "namemovie" = "namemovie",
+    "releasedate" = "releasedate",
 }
 
-class Employee extends HTMLElement {
+class Movie extends HTMLElement {
 
     image?: string;
-    name?: string;
-    uid?: number;
-    age?: number;
-    gender?: string;
-    area?: string;
-    position?: string;
-    timeincompany?: number;
-    xp?: number;
+    namemovie?: string;
+    releasedate?: number;
 
     static get observedAttributes(){
-        return Object.keys(Attribute); //  return ["image","uid","age".....]
+        return Object.keys(Attribute);
     }
 
     constructor() {
@@ -33,20 +21,8 @@ class Employee extends HTMLElement {
 
     attributeChangedCallback(propName:Attribute,oldValue: string | undefined,newValue: string | undefined){
         switch(propName){
-            case Attribute.uid: //id transform to number to string. All the same in those propieties with number
-                this.uid = newValue ? Number(newValue) : undefined;
-                break;
-            
-            case Attribute.age: //age
-                this.age = newValue ? Number(newValue) : undefined;
-                break;
-            
-            case Attribute.timeincompany: //time in company
-                this.timeincompany = newValue ? Number(newValue) : undefined;
-                break;
-            
-            case Attribute.xp: //xp
-                this.xp = newValue ? Number(newValue) : undefined;
+            case Attribute.releasedate: //id transform to number to string. All the same in those propieties with number
+                this.releasedate = newValue ? Number(newValue) : undefined;
                 break;
 
             default: 
@@ -64,30 +40,22 @@ class Employee extends HTMLElement {
     render() {
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" href="../src/components/myComponent/myComponent.css">
-            <section>
 
-            <div id="card">
-            <img src="${this.image || 'No image'}" alt="imagen de: ${this.name}">
+            <div>
+                <div id="card">
+                <img src="${this.image || 'No image'}" alt="${this.namemovie}">
+                </div>
 
-            <div id="txt">
-            <h1>${this.name || 'No name'}</h1>
-            <p>ID: ${this.uid || 'No ID'}</p>
-            <p>Age: ${this.age || 'No age'}</p>
-            <p>Gender: ${this.gender || 'No gender'}</p>
-            <p>Area: ${this.area || 'No area'}</p>
-            <p>Position: ${this.position || 'No position'}</p>
-            <p>Time In Company: ${this.timeincompany || 'No time'}</p>
-            <p>Experience Years: ${this.xp || 'No experience'}</p>
-            </div>
+                <div id="txt">
+                <h1>${this.namemovie || 'No name'}</h1>
+                <p>${this.releasedate || 'No date'}</p>
+                </div>
 
             </div>
-
-            </section>
             `
         }
     }
 }
 
-customElements.define("worker-component", Employee);
-export default Employee;
+customElements.define("movie-component", Movie);
+export default Movie;
