@@ -1,4 +1,3 @@
-
 body {
     width: 100vw;
     height: 100vh;
@@ -9,28 +8,29 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 70px;
     overflow: hidden;
 }
 
-.carousel{
+.carousel {
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    width: 100%;
-    height: 100vh;
+    width: 80%; /* Cambia el ancho del carrusel, ajusta según tus necesidades */
+    height: 60vh; /* Cambia el alto del carrusel, ajusta según tus necesidades */
 }
 
-#img{
+#img {
+    max-width: 100%; /* La imagen ocupará el 100% del ancho del carrusel */
+    max-height: 60vh; /* La imagen no excederá el 60% del viewport height */
     box-shadow: 1px 1px 20px -6px rgba(0,0,0,0.75);
-    border-radius: 7rem;
+    border-radius: 2rem; /* Reduce un poco el radio para mantener la proporción */
     margin: 1rem;
     object-fit: cover;
     filter: saturate(115%);
 }
 
-#texto{
+#texto {
     overflow: hidden;
     position: absolute;
     flex-direction: column;
@@ -44,20 +44,20 @@ body {
     border-radius: 30px;
 }
 
-.puntos{
+.puntos {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.puntos p{
-    font-size: 100px;
+.puntos p {
+    font-size: 50px; /* Ajusta el tamaño del texto de los puntos */
     font-weight: 500;
     margin-top: -50px;
     color: black;
 }
 
-.puntos .bold{
+.puntos .bold {
     font-weight: 700;
     margin-left: 10px;
     margin-right: 10px;
