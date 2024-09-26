@@ -1,6 +1,6 @@
 // import Employee, { Attribute } from "./components/MovieCards/moviecards";
-import Nav from "./components/Dashboard/nav";
 import * as components from "./components/indexPadre";
+import "./components/Dashboard/nav"
 import "./components/Carrusel/carrusel"
 import { moviesdata } from "./data/moviesdata";
 import { seriesdata } from "./data/seriesdata";
@@ -20,6 +20,9 @@ class AppContainer extends HTMLElement{
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
+            
+            <link rel="stylesheet" href="../src/styles.css">
+
             <nav-component></nav-component>
             <carousel-component></carousel-component>
             `;        
