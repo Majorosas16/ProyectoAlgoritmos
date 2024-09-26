@@ -22,24 +22,15 @@ body {
     height: 100vh;
 }
 
-.imagenes{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: end;
-}  
-
-.img{
-    box-shadow: 0px 4px 10px 0px black;
-    height: 576px;
-    width: 1134px;
-    border-radius: 15px;
-    margin: 5px;
+#img{
+    box-shadow: 1px 1px 20px -6px rgba(0,0,0,0.75);
+    border-radius: 7rem;
+    margin: 1rem;
     object-fit: cover;
-    filter: saturate(175%);
+    filter: saturate(115%);
 }
 
-.texto{
+#texto{
     overflow: hidden;
     position: absolute;
     flex-direction: column;
@@ -70,5 +61,5 @@ body {
     font-weight: 700;
     margin-left: 10px;
     margin-right: 10px;
-    color: violet;
+    color: rgb(255, 10, 255);
 }
