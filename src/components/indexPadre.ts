@@ -1,1 +1,1 @@
-export { default as Nav } from "./Dashboard/nav.js";
+export { default as Nav } from "./Dashboard/nav";
