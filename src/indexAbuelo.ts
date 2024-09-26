@@ -21,8 +21,6 @@ class AppContainer extends HTMLElement{
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
             
-            <link rel="stylesheet" href="../src/styles.css">
-
             <nav-component></nav-component>
             <carousel-component></carousel-component>
             `;        
