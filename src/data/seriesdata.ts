@@ -26,7 +26,7 @@ export const seriesdata = [
     {
         id: 2,
         category: 'serie',
-        name: 'Dahmer – Monster: The Jeffrey Dahmer Story',
+        name: 'Dahmer – Monster: The Jeffrey <br> Dahmer Story',
         description: 'A true-crime drama that tells the story of the infamous serial killer Jeffrey Dahmer, focusing on his gruesome murders and the failures of law enforcement to stop him.',
         releaseDateFirstEpisode: {
 
