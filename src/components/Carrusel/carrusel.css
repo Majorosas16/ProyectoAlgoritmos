@@ -45,3 +45,10 @@
     font-weight: bold;
     color: purple;
 }
+
+@media (max-width: 768px) {
+    .carousel {
+      display: none !important;
+    }
+}
+  
