@@ -18,10 +18,12 @@ class Carousel extends HTMLElement {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="../src/components/Carrusel/carrusel.css">
-
+                <h1>Release Trailers</h1>
                 <section class="carousel">
                     <div class="atras">
+                     <a href="">
                         <img id="atras" src="https://raw.githubusercontent.com/Majorosas16/ProyectoAlgoritmos/refs/heads/FirstDelivery/src/Recursos/Flecha%20(2).svg" alt="atras" loading="lazy">
+                     </a>
                     </div>
                     
                     <div class="imagenes">
