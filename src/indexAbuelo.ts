@@ -1,6 +1,7 @@
 import Movie, { Attribute } from "./components/MovieCards/moviecards";
 import * as components from "./components/indexPadre";
 import "./components/Dashboard/nav"
+import "./components/navResponsive/navR"
 import "./components/Carrusel/carrusel"
 import { moviesdata } from "./data/moviesdata";
 import { seriesdata } from "./data/seriesdata";
@@ -35,6 +36,7 @@ class AppContainer extends HTMLElement{
             <link rel="stylesheet" href="../src/styles.css">
 
             <nav-component></nav-component>
+            <responsive-nav></responsive-nav>
             <section class="secCarousel">
                 <carousel-component></carousel-component>
             </section>
