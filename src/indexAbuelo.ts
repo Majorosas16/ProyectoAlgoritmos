@@ -1,4 +1,5 @@
 import Movie, { Attribute } from "./components/MovieCards/moviecards";
+import Series, { Attribute2 } from "./components/seriesCards/seriescards";
 import * as components from "./components/indexPadre";
 import "./components/Dashboard/nav"
 import "./components/navResponsive/navR"
@@ -9,6 +10,7 @@ import { seriesdata } from "./data/seriesdata";
 class AppContainer extends HTMLElement{
 
     arrayMovie: Movie[] = [];
+    arraySeries: Series[] = [];
 
     constructor() {
         super();
@@ -22,6 +24,18 @@ class AppContainer extends HTMLElement{
             this.arrayMovie.push(movieCard);
         })
         // console.log(this.arrayMovie);
+
+        seriesdata.forEach(element => {
+            const serieCard = this.ownerDocument.createElement("serie-component") as Series;
+            serieCard.setAttribute(Attribute2.image, element.images.poster1);
+            serieCard.setAttribute(Attribute2.namemovie, element.name);
+            serieCard.setAttribute(Attribute2.seasons, `${Number(element.seasons)}`);
+            serieCard.setAttribute(Attribute2.releasedate, `${Number(element.releaseDateFirstEpisode.year)}`);
+            this.arraySeries.push(serieCard);
+        })
+
+        // console.log(this.arrayMovie);
+
     }
 
 
@@ -63,9 +77,21 @@ class AppContainer extends HTMLElement{
                 console.error('elements no found');
             }
 
+
+            if (container) {
+                this.arraySeries.forEach((element) => {
+                    container.appendChild(element);
+                    secCards?.appendChild(container);
+                });
+            } else {
+                console.error('elements no found');
+            }
+            
             
         }
     }
+
+    
 }
 
 customElements.define('app-container', AppContainer);
