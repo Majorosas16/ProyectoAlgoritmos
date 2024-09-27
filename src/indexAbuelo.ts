@@ -32,7 +32,7 @@ class AppContainer extends HTMLElement{
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="../src/styles.css">
+            <link rel="stylesheet" href="../src/styles.css">
 
             <nav-component></nav-component>
             <section class="secCarousel">
@@ -40,21 +40,28 @@ class AppContainer extends HTMLElement{
             </section>
 
             <section id="secCards">
-            <h1>For you</h1>
-            <h1>Explore</h1>
+                <div class="underSec">
+                    <h1 class="fyp">For you</h1>
+                    <h1 class="xplore">Explore</h1>
+                </div>
             </section>
-
             `;        
             
             const secCards = this.shadowRoot.querySelector("#secCards");
+
+            const container = document.createElement('div');
+            container.classList.add('containerCards');
             
-            if (secCards) {
+            if (container) {
                 this.arrayMovie.forEach((element) => {
-                    secCards.appendChild(element);
+                    container.appendChild(element);
+                    secCards?.appendChild(container);
                 });
             } else {
                 console.error('elements no found');
             }
+
+            
         }
     }
 }
