@@ -90,7 +90,7 @@ export const moviesdata = [
     {
         id: 5,
         category: 'movie',
-        name: 'The Hunger Games: The Ballad of Songbirds & Snakes',
+        name: 'The Hunger Games: The Ballad <br> of Songbirds & Snakes',
         description: 'A prequel that explores the early life of Coriolanus Snow and his rise to power in Panem.',
         releaseDate: 
         {
