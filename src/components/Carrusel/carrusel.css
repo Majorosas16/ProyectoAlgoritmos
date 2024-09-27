@@ -1,59 +1,47 @@
-body {
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
 
 .carousel {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    width: 80%; 
-    height: 60vh; 
+    justify-content: center; 
+    align-items: center; 
+    height: 75vh; 
+    position: relative; 
 }
 
-.imagenes{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: end;
+.atras, .adelante {
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    cursor: pointer;
 }
 
-#imgCarrusel {
-    max-width: 100%;
-    max-height: 50vh;
-    box-shadow: 1px 1px 20px -6px rgba(0,0,0,0.75);
-    border-radius: 2rem; 
-    object-fit: cover;
-    filter: saturate(115%);
+.atras {
+    left: -30%; 
+}
+
+.adelante {
+    right: -30%; 
+}
+
+.imagenes img {
+    max-width: 150%; 
+    max-height: 500px; 
+    object-fit: cover; border-radius: 15px; 
 }
 
 .puntos {
     position: absolute;
-    bottom: 10rem; 
-    display: flex;
-    gap: 5px;
-    justify-content: center;
-    width: 100%; 
+    bottom: -4%; 
+    width: 100%;
+    text-align: center;
 }
 
 .puntos p {
-    font-size: 100px; 
-    font-weight: 500;
-    margin-top: -50px;
-    color: black;
+    display: inline-block;
+    margin: 0 5px;
+    font-size: 5rem; 
 }
 
-.puntos .bold {
-    margin-left: 10px;
-    margin-right: 10px;
-    color: rgb(233, 0, 233);
+.bold {
+    font-weight: bold;
+    color: purple;
 }

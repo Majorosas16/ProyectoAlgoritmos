@@ -1,6 +1,6 @@
 export const imagenesCarrusel = [
     {
-        "url": "https://raw.githubusercontent.com/Majorosas16/ProyectoAlgoritmos/refs/heads/main/src/Recursos/Batman%20(1).webp"
+        "url": "https://i.ytimg.com/vi/v2Z31zpOCgc/maxresdefault.jpg"
     },
     {
         "url": "https://raw.githubusercontent.com/Majorosas16/ProyectoAlgoritmos/refs/heads/FirstDelivery/src/Recursos/GOT.webp"
