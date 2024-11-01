@@ -28,6 +28,7 @@ class Login extends HTMLElement {
 
 	submitForm() {
 		loginUser(credentials.email, credentials.password);
+		window.location.reload();
 	}
 
 	async render() {

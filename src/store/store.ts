@@ -16,6 +16,8 @@ const onAuth = async () => {
 			dispatch(navigate(Screens.LOGIN));
 
 		}
+		console.log(user);
+		
 	});
 	console.log('hola');
 	
