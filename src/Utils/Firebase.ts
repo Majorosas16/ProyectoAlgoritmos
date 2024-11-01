@@ -8,15 +8,14 @@ const getFirebaseInstance = async () => {
 		const { getAuth } = await import('firebase/auth');
 
 		const firebaseConfig = {
-			apiKey: 'AIzaSyDdeXwNTkI8lHfmjLFhtC4FbJvfGKIr9_s',
-			authDomain: 'apps-reto1.firebaseapp.com',
-			databaseURL: 'https://apps-reto1.firebaseio.com',
-			projectId: 'apps-reto1',
-			storageBucket: 'apps-reto1.appspot.com',
-			messagingSenderId: '470696037037',
-			appId: '1:470696037037:web:6de930ceb2df9d14ddd424',
-			measurementId: 'G-G9ELH58HS7',
-		};
+            apiKey: "AIzaSyDCB2QULYDJ68gf3XhKWORkiq1Ec2vQg08",
+            authDomain: "proyectofinalalgo.firebaseapp.com",
+            projectId: "proyectofinalalgo",
+            storageBucket: "proyectofinalalgo.firebasestorage.app",
+            messagingSenderId: "439979851204",
+            appId: "1:439979851204:web:39cee00256f7739f1f3891",
+            measurementId: "G-PNS34MDXCK"
+          };
 
 		const app = initializeApp(firebaseConfig);
 		db = getFirestore(app);
