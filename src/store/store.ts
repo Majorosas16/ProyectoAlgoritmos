@@ -11,7 +11,7 @@ const onAuth = async () => {
 		if (user) {
 			user.uid !== null ? dispatch(setUserCredentials(user.uid)) : '';
 			 //Es la que se encarga de guardar el id del usuario
-			dispatch(navigate(Screens.LOGIN)); //Esta es la de navegar a dashboard
+			dispatch(navigate(Screens.DASHBOARD)); //Esta es la de navegar a dashboard
 		} else {
 			dispatch(navigate(Screens.LOGIN));
 

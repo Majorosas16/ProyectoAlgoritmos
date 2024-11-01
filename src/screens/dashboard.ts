@@ -8,7 +8,7 @@ import "../components/navResponsive/navR"
 import "../components/Carrusel/carrusel"
 import { moviesdata } from "../data/moviesdata";
 import { seriesdata } from "../data/seriesdata";
-import '../src/screens/registro';
+import '../screens/registro';
 import '../screens/dashboard';
 import { addObserver, appState } from '../store/store';
 import { Screens } from '../types/store';
@@ -53,6 +53,12 @@ class Dashboard extends HTMLElement {
         this.render();
     }
 
+    logout() {
+		indexedDB.deleteDatabase('firebase-heartbeat-database');
+		indexedDB.deleteDatabase('firebaseLocalStorageDb');
+		window.location.reload();
+	}
+
 
     render() {
         if (this.shadowRoot) {
@@ -73,6 +79,8 @@ class Dashboard extends HTMLElement {
                     <h1 class="xplore">Explore</h1>
                 </div>
             </section>
+
+            <buttom>Cerrar perfil</buttom>
             `;        
 
             const secCards = this.shadowRoot.querySelector("#secCards");
@@ -99,7 +107,10 @@ class Dashboard extends HTMLElement {
                 console.error('elements no found');
             }
             
-            
+        const logoutBtn = this.ownerDocument.createElement('button');
+		logoutBtn.innerText = 'Logout';
+		logoutBtn.addEventListener('click', this.logout);
+		this.shadowRoot?.appendChild(logoutBtn);
             
         }
     }

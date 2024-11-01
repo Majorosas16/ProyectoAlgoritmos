@@ -50,6 +50,14 @@ class Login extends HTMLElement {
 			save.innerText = 'Iniciar sesión';
 			save.addEventListener('click', this.submitForm);
 			this.shadowRoot.appendChild(save);
+
+			const register = this.ownerDocument.createElement('buttom');
+			register.innerText = 'Registro';
+			register?.addEventListener('click',() =>  {
+                dispatch(navigate(Screens.REGISTER))
+            });
+			this.shadowRoot.appendChild(register);
+
 		}
 	}
 }
