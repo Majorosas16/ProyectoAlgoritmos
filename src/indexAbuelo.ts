@@ -7,6 +7,7 @@ import "./components/Carrusel/carrusel"
 import { moviesdata } from "./data/moviesdata";
 import { seriesdata } from "./data/seriesdata";
 import '../src/screens/registro';
+import './screens/dashboard';
 import { addObserver, appState } from './store/store';
 import { Screens } from './types/store';
 
@@ -55,6 +56,7 @@ class AppContainer extends HTMLElement{
             <app-register></app-register>
             <nav-component></nav-component>
             <responsive-nav></responsive-nav>
+            <app-dashboard></app-dashboard>
             <section class="secCarousel">
                 <carousel-component></carousel-component>
             </section>
