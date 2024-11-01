@@ -6,6 +6,9 @@ import "./components/navResponsive/navR"
 import "./components/Carrusel/carrusel"
 import { moviesdata } from "./data/moviesdata";
 import { seriesdata } from "./data/seriesdata";
+import '../src/screens/registro';
+import { addObserver, appState } from './store/store';
+import { Screens } from './types/store';
 
 class AppContainer extends HTMLElement{
 
@@ -49,6 +52,7 @@ class AppContainer extends HTMLElement{
             this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../src/styles.css">
 
+            <app-register></app-register>
             <nav-component></nav-component>
             <responsive-nav></responsive-nav>
             <section class="secCarousel">
@@ -87,6 +91,20 @@ class AppContainer extends HTMLElement{
                 console.error('elements no found');
             }
             
+            switch (appState.screen) {
+				case Screens.REGISTER:
+					const register = this.ownerDocument.createElement('app-register');
+					this.shadowRoot.appendChild(register);
+					break;
+
+				case Screens.DASHBOARD:
+					const dashboard = this.ownerDocument.createElement('app-dashboard');
+					this.shadowRoot.appendChild(dashboard);
+					break;
+
+				default:
+					break;
+			}
             
         }
     }
