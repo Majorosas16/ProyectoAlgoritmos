@@ -1,10 +1,13 @@
 import { dispatch } from '../store/store';
 import { navigate } from '../store/actions';
+import { Screens } from '../types/store';
 import { registerUser } from '../utils/Firebase';
 
 const credentials = {
 	email: '',
 	password: '',
+	name: '',
+	age: '',
 };
 
 class Register extends HTMLElement {
@@ -25,9 +28,17 @@ class Register extends HTMLElement {
 		credentials.password = e.target.value;
 	}
 
+	changeName(e: any) {
+		credentials.name = e.target.value;
+	}
+
+	changeAge(e: any) {
+		credentials.age = e.target.value;
+	}
+
 	async submitForm() {
-		const resp = await registerUser(credentials.email, credentials.password);
-		resp ? dispatch(navigate('DASHBOARD')) : alert('No se pudo crear el usuario');
+		const resp = await registerUser(credentials);
+		resp ? dispatch(navigate(Screens.LOGIN)) : alert('No se pudo crear el usuario');
 	}
 
 	async render() {
@@ -36,15 +47,25 @@ class Register extends HTMLElement {
 			title.innerText = 'Registro';
 			this.shadowRoot.appendChild(title);
 
-			const pName = this.ownerDocument.createElement('input');
-			pName.placeholder = 'Correo electronico';
-			pName.addEventListener('change', this.changeEmail);
-			this.shadowRoot.appendChild(pName);
+			const pEmail = this.ownerDocument.createElement('input');
+			pEmail.placeholder = 'Correo electronico';
+			pEmail.addEventListener('change', this.changeEmail);
+			this.shadowRoot.appendChild(pEmail);
 
 			const pPrice = this.ownerDocument.createElement('input');
 			pPrice.placeholder = 'Contraseña';
 			pPrice.addEventListener('change', this.changePassword);
 			this.shadowRoot.appendChild(pPrice);
+
+			const pName = this.ownerDocument.createElement('input');
+			pName.placeholder = 'Nombre completo';
+			pName.addEventListener('change', this.changeName);
+			this.shadowRoot.appendChild(pName);
+
+			const pAge = this.ownerDocument.createElement('input');
+			pAge.placeholder = 'Edad';
+			pAge.addEventListener('change', this.changeAge);
+			this.shadowRoot.appendChild(pAge);
 
 			const save = this.ownerDocument.createElement('button');
 			save.innerText = 'Registrarme';
