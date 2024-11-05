@@ -71,6 +71,13 @@ class Register extends HTMLElement {
 			save.innerText = 'Registrarme';
 			save.addEventListener('click', this.submitForm);
 			this.shadowRoot.appendChild(save);
+
+			const login = this.ownerDocument.createElement('buttom');
+			login.innerText = 'Login';
+			login?.addEventListener('click',() =>  {
+                dispatch(navigate(Screens.LOGIN))
+            });
+			this.shadowRoot.appendChild(login);
 		}
 	}
 }
