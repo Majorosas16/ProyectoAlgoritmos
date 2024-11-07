@@ -1,5 +1,8 @@
 import { addProduct } from "../utils/Firebase";
 import { review } from "../types/product";
+import { dispatch } from "../store/store";
+import { navigate } from '../store/actions';
+import { Screens } from '../types/store';
 
 // const review = { //dummie o esta inicial
 //     title: '',
@@ -48,9 +51,10 @@ class CreatePost extends HTMLElement {
     //capturar el valor del input
      review.review = e.target.value; 
     }
-
+    
     submitForm(e: any) {
         addProduct(review); // enviar las los value a la data
+        dispatch((Screens.DASHBOARD))
     }
 
     async render() {

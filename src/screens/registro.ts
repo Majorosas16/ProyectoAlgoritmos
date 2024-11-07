@@ -8,7 +8,6 @@ import { credentials } from '../types/product';
 // 	email: '',
 // 	password: '',
 // 	name: '',
-// 	age: '',
 //  bio: ''
 // };
 

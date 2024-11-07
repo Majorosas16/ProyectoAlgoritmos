@@ -17,7 +17,6 @@ export enum Attribute {
 	email: '',
 	password: '',
 	name: '',
-     age: '',
     bio : ''
  };
 

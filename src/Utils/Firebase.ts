@@ -38,11 +38,6 @@ export const addProduct = async (product: any) => { // utilidad que agrega produ
 		const { collection, addDoc } = await import('firebase/firestore');
 
 		const where = collection(db, 'products'); //"vas a crear una coleccion en mi base de datos. con el nombre '...'"
-		// const registerProduct = {
-		// 	name: product.name,
-		// 	price: product.price,
-		// 	userUid: appState.user,
-		// };
 		await addDoc(where, product); //vas a guardar el producto en where
 		console.log('Se añadió con exito');
 	} catch (error) {
@@ -80,9 +75,20 @@ export const registerUser = async (credentials: any) => {
 
 		const where = doc(db, 'users', userCredential.user.uid);
 		const data = {
-			age: credentials.age,
+			email: credentials.email,
+			password: credentials.password,
 			name: credentials.name,
+			bio: credentials.bio,
+
 		};
+
+		// const credentials = {
+// 	email: '',
+// 	password: '',
+// 	name: '',
+// 	age: '',
+//  bio: ''
+// };
 
 		await setDoc(where, data);
 		return true;
@@ -106,7 +112,7 @@ export const getUser = async () => { // utilidad que obtiene productos
 		});
 
 		return data; // retorna la data con los datos que solo me importan
-		
+
 	} catch (error) {
 		console.error('Error getting documents', error);
 	}
@@ -130,8 +136,3 @@ export const loginUser = async (email: string, password: string) => {
 		console.error(error);
 	}
 };
-
-// export const uploadFile = async () => {
-// 	const {ref} = await import('firebase/storage');
-// 	const storageRef = ref()
-// }
