@@ -1,14 +1,18 @@
 import { appState } from '../store/store';
+import storage from './storage';
 
 let db: any;
 let auth: any;
+let storagefb: any;
 
+//esto para que el bundle no esté tan pesado
 export const getFirebaseInstance = async () => {
-	if (!db) {
-		const { getFirestore } = await import('firebase/firestore');
-		const { initializeApp } = await import('firebase/app');
-		const { getAuth } = await import('firebase/auth');
-
+	if (!db) { //si existe la base de datos
+		const { getFirestore } = await import('firebase/firestore'); //base de datos
+		const { initializeApp } = await import('firebase/app'); // inicializa la aplicación
+		const { getAuth } = await import('firebase/auth'); //autenticacion
+		const { getStorage } = await import('firebase/storage'); //storage, para imagenes, videos y mas
+		
 		const firebaseConfig = {
 			apiKey: "AIzaSyDCB2QULYDJ68gf3XhKWORkiq1Ec2vQg08",
 			authDomain: "proyectofinalalgo.firebaseapp.com",
@@ -19,46 +23,47 @@ export const getFirebaseInstance = async () => {
 			measurementId: "G-PNS34MDXCK"
 		  };
 
-		const app = initializeApp(firebaseConfig);
-		db = getFirestore(app);
+		const app = initializeApp(firebaseConfig); // esto inicializa la app con la llave "firebaseConfig"
+		db = getFirestore(app); //referencia de la base de datos
 		auth = getAuth(app);
+		storagefb = getStorage();
 	}
-	return { db, auth };
+	return { db, auth, storage };
 };
 
-export const addProduct = async (product: any) => {
+export const addProduct = async (product: any) => { // utilidad que agrega productos a la base de datos
 	try {
 		console.log(appState.user);
 		const { db } = await getFirebaseInstance();
 		const { collection, addDoc } = await import('firebase/firestore');
 
-		const where = collection(db, 'products');
+		const where = collection(db, 'products'); //"vas a crear una coleccion en mi base de datos. con el nombre '...'"
 		const registerProduct = {
 			name: product.name,
 			price: product.price,
 			userUid: appState.user,
 		};
-		await addDoc(where, registerProduct);
+		await addDoc(where, registerProduct); //vas a guardar el producto en where
 		console.log('Se añadió con exito');
 	} catch (error) {
 		console.error('Error adding document', error);
 	}
 };
 
-export const getProducts = async () => {
+export const getProducts = async () => { // utilidad que obtiene productos
 	try {
 		const { db } = await getFirebaseInstance();
 		const { collection, getDocs } = await import('firebase/firestore');
 
-		const where = collection(db, 'products');
-		const querySnapshot = await getDocs(where);
-		const data: any[] = [];
+		const where = collection(db, 'products'); //"vas a crear una coleccion en mi base de datos. con el nombre 'productis'"
+		const querySnapshot = await getDocs(where); // toma un captura de pantalla
+		const data: any[] = []; 
 
-		querySnapshot.forEach((doc) => {
-			data.push(doc.data());
+		querySnapshot.forEach((doc) => { //recorre el arreglo querySnapshot
+			data.push(doc.data()); // solo quiero la data, lo que fue escrito
 		});
 
-		return data;
+		return data; // retorna la data con los datos que solo me importan
 	} catch (error) {
 		console.error('Error getting documents', error);
 	}
@@ -104,3 +109,8 @@ export const loginUser = async (email: string, password: string) => {
 		console.error(error);
 	}
 };
+
+// export const uploadFile = async () => {
+// 	const {ref} = await import('firebase/storage');
+// 	const storageRef = ref()
+// }
