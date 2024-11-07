@@ -91,6 +91,25 @@ export const registerUser = async (credentials: any) => {
 	}
 };
 
+export const getUser = async () => { // utilidad que obtiene productos
+	try {
+		const { db } = await getFirebaseInstance();
+		const { collection, getDocs } = await import('firebase/firestore');
+
+		const where = collection(db, 'users');
+		const querySnapshot = await getDocs(where); // toma un captura de pantalla
+		const data: any[] = []; 
+
+		querySnapshot.forEach((doc) => { //recorre el arreglo querySnapshot
+			data.push(doc.data()); // solo quiero la data, lo que fue escrito
+		});
+
+		return data; // retorna la data con los datos que solo me importan
+	} catch (error) {
+		console.error('Error getting documents', error);
+	}
+};
+
 export const loginUser = async (email: string, password: string) => {
 	try {
 		const { auth } = await getFirebaseInstance();

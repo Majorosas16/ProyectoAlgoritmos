@@ -1,24 +1,21 @@
 import { Product } from '../types/product';
 import { getProducts } from '../utils/Firebase';
+import { getUser } from '../utils/Firebase';
 import '../components/ReviewCard/reviewcard'
-import ReviewCard , {Attribute} from '../components/ReviewCard/reviewcard'
+import ReviewCard from '../components/ReviewCard/reviewcard'
+import { Attribute } from '../types/product';
 
 
 import * as components from "../components/indexPadre";
 import "../components/Dashboard/nav"
 import "../components/navResponsive/navR"
 import "../components/Carrusel/carrusel"
-import { moviesdata } from "../data/moviesdata";
-import { seriesdata } from "../data/seriesdata";
+
+
 import '../screens/registro';
 import '../screens/dashboard';
 import { addObserver, appState } from '../store/store';
 import { Screens } from '../types/store';
-
-const product: Product = {
-	name: '',
-	price: 0,
-};
 
 class Dashboard extends HTMLElement {
 
@@ -52,7 +49,6 @@ class Dashboard extends HTMLElement {
             this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../src/styles.css">
 
-           
             <nav-component></nav-component>
             <responsive-nav></responsive-nav>
     
@@ -100,10 +96,18 @@ class Dashboard extends HTMLElement {
 		this.shadowRoot?.appendChild(logoutBtn);
             
             
-            const review = await getProducts();  
+            const review = await getProducts();  //referencia de la data que está en firebase
+            const user = await getUser(); //referencia de la data que está en firebase
+
             review?.forEach((element) => {
-                const container = this.ownerDocument.createElement('section');
-                
+                user?.forEach((element2) =>{
+                    const reviewCard = this.ownerDocument.createElement("review-component") as ReviewCard;
+                    reviewCard.setAttribute(Attribute.imageprofile, element.image);
+                    reviewCard.setAttribute(Attribute.user, element.name);
+                    movieCard.setAttribute(Attribute.releasedate, `${Number(element.releaseDate.year)}`)
+                    this.arrayMovie.push(movieCard); 
+                })
+
             })
         }
     }
@@ -111,3 +115,13 @@ class Dashboard extends HTMLElement {
 
 customElements.define('app-dashboard', Dashboard);
 export default Dashboard;
+
+// export enum Attribute {
+//     "imageprofile" = "imageprofile",
+//     "user" = "user",
+//     "bio" = "bio",
+//     "imagecover" = "imagecover",
+//     "titlereview" = "titlereview",
+//     "rating" = "rating",
+//     "dateadded" = "dateadded",
+// }

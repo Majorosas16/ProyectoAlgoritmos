@@ -49,7 +49,7 @@ class CreatePost extends HTMLElement {
     }
 
     submitForm(e: any) {
-        addProduct(review);
+        addProduct(review); // enviar las los value a la data
     }
 
     async render() {
@@ -70,9 +70,6 @@ class CreatePost extends HTMLElement {
                     <input id="review" type="text" required placeholder="Is your turn">
                     <button id="submitButton">Publish</button>
                     </form>
-                    
-                <section>
-                </section>
                 `;
             
             //Eventos a cada input y botón, llamo la función que cambia el estado
