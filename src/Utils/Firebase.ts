@@ -38,12 +38,12 @@ export const addProduct = async (product: any) => { // utilidad que agrega produ
 		const { collection, addDoc } = await import('firebase/firestore');
 
 		const where = collection(db, 'products'); //"vas a crear una coleccion en mi base de datos. con el nombre '...'"
-		const registerProduct = {
-			name: product.name,
-			price: product.price,
-			userUid: appState.user,
-		};
-		await addDoc(where, registerProduct); //vas a guardar el producto en where
+		// const registerProduct = {
+		// 	name: product.name,
+		// 	price: product.price,
+		// 	userUid: appState.user,
+		// };
+		await addDoc(where, product); //vas a guardar el producto en where
 		console.log('Se añadió con exito');
 	} catch (error) {
 		console.error('Error adding document', error);

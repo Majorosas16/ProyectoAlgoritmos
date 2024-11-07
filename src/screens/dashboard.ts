@@ -1,7 +1,9 @@
 import { Product } from '../types/product';
-import { addProduct, getProducts } from '../utils/Firebase';
-import Movie, { Attribute } from "../components/MovieCards/moviecards";
-import Series, { Attribute2 } from "../components/seriesCards/seriescards";
+import { getProducts } from '../utils/Firebase';
+import '../components/ReviewCard/reviewcard'
+import ReviewCard , {Attribute} from '../components/ReviewCard/reviewcard'
+
+
 import * as components from "../components/indexPadre";
 import "../components/Dashboard/nav"
 import "../components/navResponsive/navR"
@@ -20,35 +22,20 @@ const product: Product = {
 
 class Dashboard extends HTMLElement {
 
-	arrayMovie: Movie[] = [];
-    arraySeries: Series[] = [];
+	arrayReview: ReviewCard[] = [];
 
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
 
-        moviesdata.forEach(element => {
-            const movieCard = this.ownerDocument.createElement("movie-component") as Movie;
-            movieCard.setAttribute(Attribute.image, element.images.poster1);
-            movieCard.setAttribute(Attribute.namemovie, element.name);
-            movieCard.setAttribute(Attribute.releasedate, `${Number(element.releaseDate.year)}`)
-            this.arrayMovie.push(movieCard);
-        })
-        // console.log(this.arrayMovie);
-
-        seriesdata.forEach(element => {
-            const serieCard = this.ownerDocument.createElement("serie-component") as Series;
-            serieCard.setAttribute(Attribute2.image, element.images.poster1);
-            serieCard.setAttribute(Attribute2.namemovie, element.name);
-            serieCard.setAttribute(Attribute2.seasons, `${Number(element.seasons)}`);
-            serieCard.setAttribute(Attribute2.releasedate, `${Number(element.releaseDateFirstEpisode.year)}`);
-            this.arraySeries.push(serieCard);
-        })
-
-
+        // moviesdata.forEach(element => {
+        //     const movieCard = this.ownerDocument.createElement("movie-component") as Movie;
+        //     movieCard.setAttribute(Attribute.image, element.images.poster1);
+        //     movieCard.setAttribute(Attribute.namemovie, element.name);
+        //     movieCard.setAttribute(Attribute.releasedate, `${Number(element.releaseDate.year)}`)
+        //     this.arrayMovie.push(movieCard);
+        // })
     }
-
-
     connectedCallback() {
         this.render();
     }
@@ -60,7 +47,7 @@ class Dashboard extends HTMLElement {
 	}
 
 
-    render() {
+    async render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../src/styles.css">
@@ -112,6 +99,12 @@ class Dashboard extends HTMLElement {
 		logoutBtn.addEventListener('click', this.logout);
 		this.shadowRoot?.appendChild(logoutBtn);
             
+            
+            const review = await getProducts();  
+            review?.forEach((element) => {
+                const container = this.ownerDocument.createElement('section');
+                
+            })
         }
     }
 }
