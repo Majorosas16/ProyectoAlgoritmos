@@ -1,24 +1,23 @@
 import { Product } from '../types/product';
 import { getProducts } from '../utils/Firebase';
+import { getUser } from '../utils/Firebase';
 import '../components/ReviewCard/reviewcard'
-import ReviewCard , {Attribute} from '../components/ReviewCard/reviewcard'
+import ReviewCard from '../components/ReviewCard/reviewcard'
+import { Attribute } from '../types/product';
+import { credentials } from '../types/product';
+import { review } from '../types/product';
 
 
 import * as components from "../components/indexPadre";
 import "../components/Dashboard/nav"
 import "../components/navResponsive/navR"
 import "../components/Carrusel/carrusel"
-import { moviesdata } from "../data/moviesdata";
-import { seriesdata } from "../data/seriesdata";
+
+
 import '../screens/registro';
 import '../screens/dashboard';
 import { addObserver, appState } from '../store/store';
 import { Screens } from '../types/store';
-
-const product: Product = {
-	name: '',
-	price: 0,
-};
 
 class Dashboard extends HTMLElement {
 
@@ -27,14 +26,6 @@ class Dashboard extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-
-        // moviesdata.forEach(element => {
-        //     const movieCard = this.ownerDocument.createElement("movie-component") as Movie;
-        //     movieCard.setAttribute(Attribute.image, element.images.poster1);
-        //     movieCard.setAttribute(Attribute.namemovie, element.name);
-        //     movieCard.setAttribute(Attribute.releasedate, `${Number(element.releaseDate.year)}`)
-        //     this.arrayMovie.push(movieCard);
-        // })
     }
     connectedCallback() {
         this.render();
@@ -52,7 +43,6 @@ class Dashboard extends HTMLElement {
             this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../src/styles.css">
 
-           
             <nav-component></nav-component>
             <responsive-nav></responsive-nav>
     
@@ -75,36 +65,47 @@ class Dashboard extends HTMLElement {
             const container = document.createElement('div');
             container.classList.add('containerCards');
             
-            if (container) {
-                this.arrayMovie.forEach((element) => {
-                    container.appendChild(element);
-                    secCards?.appendChild(container);
-                });
-            } else {
-                console.error('elements no found');
-            }
-
-
-            if (container) {
-                this.arraySeries.forEach((element) => {
-                    container.appendChild(element);
-                    secCards?.appendChild(container);
-                });
-            } else {
-                console.error('elements no found');
-            }
+            // if (container) {
+            //     this.arraySeries.forEach((element) => {
+            //         container.appendChild(element);
+            //         secCards?.appendChild(container);
+            //     });
+            // } else {
+            //     console.error('elements no found');
+            // }
             
         const logoutBtn = this.ownerDocument.createElement('button');
 		logoutBtn.innerText = 'Logout';
 		logoutBtn.addEventListener('click', this.logout);
 		this.shadowRoot?.appendChild(logoutBtn);
             
-            
-            const review = await getProducts();  
-            review?.forEach((element) => {
-                const container = this.ownerDocument.createElement('section');
-                
+        const review = await getProducts();  //referencia de la data que está en firebase
+        const user = await getUser(); //referencia de la data que está en firebase
+
+        review?.forEach((elementReview) => {
+            user?.forEach((elementUser) =>{
+                const reviewCard = this.ownerDocument.createElement("review-component") as ReviewCard;
+                reviewCard.setAttribute(Attribute.imageprofile, elementUser.image);
+                reviewCard.setAttribute(Attribute.user, elementUser.name);
+                reviewCard.setAttribute(Attribute.bio, elementUser.bio);
+                reviewCard.setAttribute(Attribute.imagecover, elementReview.image);
+                reviewCard.setAttribute(Attribute.titlereview, elementReview.title);
+                reviewCard.setAttribute(Attribute.rating, elementReview.rating);
+                reviewCard.setAttribute(Attribute.dateadded, elementReview.dateadded);
+                this.arrayReview.push(reviewCard); 
             })
+
+        })
+        if (container) {
+            this.arrayReview.forEach((element) => {
+                container.appendChild(element);
+                secCards?.appendChild(container);
+            });
+        } else {
+            console.error('elements no found');
+        }
+            
+
         }
     }
 }

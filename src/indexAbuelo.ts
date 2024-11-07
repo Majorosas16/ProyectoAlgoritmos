@@ -32,11 +32,13 @@ class AppContainer extends HTMLElement {
 				case Screens.DASHBOARD:
 					const dashboard = this.ownerDocument.createElement('app-dashboard');
 					this.shadowRoot.appendChild(dashboard);
-
 					break;
 
+				case Screens.FORMREVIEW:
+					const formReview = this.ownerDocument.createElement('createpost-component');
+					this.shadowRoot.appendChild(formReview);
+					break
 				default:
-					break;
 			}
 			console.log(appState);
 		}

@@ -1,4 +1,6 @@
 import "../Button/button"
+import { dispatch } from "../../store/store";
+import { Screens } from "../../types/store";
 
 class Nav extends HTMLElement {
 
@@ -25,7 +27,7 @@ class Nav extends HTMLElement {
                     <div class="nav-buttons">
                         <btn-component color="white" label="Favorites" textColor="#5D3B94"></btn-component>
                         <btn-component color="white" label="Search" textColor="#5D3B94"></btn-component>
-                        <btn-component color="#5D3B94" label="Create" textColor="white"></btn-component>
+                        <btn-component id="create" color="#5D3B94" label="Create" textColor="white"></btn-component>
                     </div>
                 </section>
                 <div class="profile">
@@ -33,6 +35,12 @@ class Nav extends HTMLElement {
                 </div>
             </nav>
             `;
+
+            const create = this.querySelector("#create");
+            create?.addEventListener('click', () => {
+                dispatch((Screens.FORMREVIEW))
+            })
+
         }
     }
 }

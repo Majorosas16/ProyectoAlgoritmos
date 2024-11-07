@@ -1,14 +1,15 @@
 import styles from './reviewcard.css'
+import { Attribute } from '../../types/product';
 
-export enum Attribute {
-    "imageprofile" = "imageprofile",
-    "user" = "user",
-    "bio" = "bio",
-    "imagecover" = "imagecover",
-    "titlereview" = "titlereview",
-    "rating" = "rating",
-    "dateadded" = "dateadded",
-}
+// export enum Attribute {
+//     "imageprofile" = "imageprofile",
+//     "user" = "user",
+//     "bio" = "bio",
+//     "imagecover" = "imagecover",
+//     "titlereview" = "titlereview",
+//     "rating" = "rating",
+//     "dateadded" = "dateadded",
+// }
 
 class ReviewCard extends HTMLElement {
 
