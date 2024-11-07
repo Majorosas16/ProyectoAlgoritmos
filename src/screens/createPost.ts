@@ -1,25 +1,19 @@
-import { addProduct } from "../utils/Firebase";
+import { addProduct, uploadFile } from "../utils/Firebase";
 import { review } from "../types/product";
-import { dispatch } from "../store/store";
+import { addObserver, appState, dispatch } from "../store/store";
 import { navigate } from '../store/actions';
 import { Screens } from '../types/store';
-
-// const review = { //dummie o esta inicial
-//     title: '',
-//     name: '',
-//     rating: 1,
-//     image: '',
-//     review: ''
-// }
 
 class CreatePost extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+        addObserver(this)
     }
 
     connectedCallback() {
         this.render();
+        alert("CREATE A POST")
     }
 
     changeTitle(e:any) {
@@ -36,16 +30,6 @@ class CreatePost extends HTMLElement {
      //capturar el valor del input
      review.rating = e.target.value;      
     }
-    changeImage(e: any) {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            review.image = reader.result as string;
-        };
-        if (file) {
-            reader.readAsDataURL(file);
-        };
-    }
 
     changeReview(e: any) {
     //capturar el valor del input
@@ -53,11 +37,12 @@ class CreatePost extends HTMLElement {
     }
     
     submitForm(e: any) {
+
         addProduct(review); // enviar las los value a la data
-        dispatch((Screens.DASHBOARD))
+        dispatch(navigate(Screens.FORMREVIEW));
     }
 
-    async render() {
+   render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
                 <h1>Create a Review</h1>
@@ -93,9 +78,14 @@ class CreatePost extends HTMLElement {
             rating.addEventListener('change', this.changeRating);
             rating.required
 
-            const songImage = this.shadowRoot?.querySelector("#photo") as HTMLInputElement;
-            songImage.addEventListener('change', this.changeImage.bind(this));
-            songImage.required
+            const image = this.shadowRoot?.querySelector("#photo") as HTMLInputElement;
+            image.addEventListener('change', () =>{
+                console.log(image.files?.[0]);
+                const file = image.files?.[0];
+                
+                if(file) uploadFile (file,appState.user);
+            });
+            image.required
 
             const review = this.shadowRoot?.querySelector("#review") as HTMLInputElement;
             review.addEventListener('change', this.changeReview);
@@ -106,4 +96,5 @@ class CreatePost extends HTMLElement {
     }
 }
 
-customElements.define('createpost-component', CreatePost);
+customElements.define('create-post', CreatePost);
+export default CreatePost;

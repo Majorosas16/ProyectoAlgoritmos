@@ -1,4 +1,4 @@
-export enum BtnAttribute {
+export enum BtnAttribute { // se puede tipar
     "color" = "color",
     "label" = "label",
     "textcolor" = "textcolor",

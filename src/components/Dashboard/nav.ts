@@ -1,5 +1,8 @@
 import "../Button/button"
+import Button from "../Button/button";
+import { BtnAttribute } from "../Button/button"
 import { dispatch } from "../../store/store";
+import { navigate } from "../../store/actions"
 import { Screens } from "../../types/store";
 
 class Nav extends HTMLElement {
@@ -27,7 +30,7 @@ class Nav extends HTMLElement {
                     <div class="nav-buttons">
                         <btn-component color="white" label="Favorites" textColor="#5D3B94"></btn-component>
                         <btn-component color="white" label="Search" textColor="#5D3B94"></btn-component>
-                        <btn-component id="create" color="#5D3B94" label="Create" textColor="white"></btn-component>
+                        <btn-component color="#5D3B94" label="Create" textColor="white"></btn-component>
                     </div>
                 </section>
                 <div class="profile">
@@ -36,14 +39,27 @@ class Nav extends HTMLElement {
             </nav>
             `;
 
-            const create = this.querySelector("#create");
-            create?.addEventListener('click', () => {
-                dispatch((Screens.FORMREVIEW))
-            })
+            const containerBtn = this.shadowRoot.querySelector(".nav-buttons")
+
+            if (containerBtn) {
+                const createButton = this.ownerDocument.createElement("btn-component") as Button;
+                createButton.setAttribute("color", "#5D3B94");
+                createButton.setAttribute("label", "Create");
+                createButton.setAttribute("textColor", "white");
+    
+                createButton?.addEventListener('click', () => {
+                    dispatch(navigate(Screens.FORMREVIEW));
+                });
+    
+                containerBtn.appendChild(createButton);
+                this.shadowRoot.appendChild(containerBtn);
+            } else {
+                console.error("No se pudo encontrar el contenedor de botones");
+            }
+        }
 
         }
     }
-}
 
 customElements.define('nav-component', Nav);
 export default Nav;
