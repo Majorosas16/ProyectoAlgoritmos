@@ -43,7 +43,7 @@ class Login extends HTMLElement {
 			`;
 
 			const logo = this.ownerDocument.createElement('img');
-			logo.src = 'https://i.pinimg.com/736x/f3/16/66/f31666a63ead6dcefaef107523851ff8.jpg';
+			logo.src = 'https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/Group%2085.png?raw=true';
 			logo.alt = 'Logo'; 
 			logo.className = 'logo-img'; 
 			this.shadowRoot.appendChild(logo);
