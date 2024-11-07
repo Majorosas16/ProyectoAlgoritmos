@@ -1,7 +1,121 @@
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+}
+
+/* Fondo de imagen */
+.imgFondo-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+
+.logo-img {
+    position: absolute;
+    top: 35rem; 
+    left: 50%;
+    transform: translateX(-50%) scale(0.7);
+}
 
 .titulo {
     font-size: 2rem;
-    color: #6c32c2;
+    font-weight: 1000;
+    color: #522884;
     margin-bottom: 1.5rem;
+    text-align: center;
+    margin-right: 10rem;
+}
+
+
+.email, .password {
+    width: 80%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 3px solid #000000;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+
+.forgot {
+    display: block;
+    text-align: right;
+    width: 80%;
+    color: #ffffff;
+    margin: 0.5rem 0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-radius: 1rem;
+}
+
+
+.save3 {
+    display: block;
+    color: #555;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+
+.iniciarSesion {
+    width: 80%;
+    padding: 0.8rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+
+.hr {
+    width: 80%;
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 1.5rem 0;
+}
+
+
+.save4 {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+
+.user-icon {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.user-icon svg {
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
 }

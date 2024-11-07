@@ -42,6 +42,12 @@ class Login extends HTMLElement {
     			</section>
 			`;
 
+			const imgFondo = this.ownerDocument.createElement('img');
+			imgFondo.src = 'https://i.pinimg.com/564x/f3/16/66/f31666a63ead6dcefaef107523851ff8.jpg';
+			imgFondo.alt = 'imgFondo'; 
+			imgFondo.className = 'imgFondo-img'; 
+			this.shadowRoot.appendChild(imgFondo);
+			
 			const logo = this.ownerDocument.createElement('img');
 			logo.src = 'https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/Group%2085.png?raw=true';
 			logo.alt = 'Logo'; 
@@ -49,7 +55,7 @@ class Login extends HTMLElement {
 			this.shadowRoot.appendChild(logo);
 
 			const title = this.ownerDocument.createElement('h1');
-			title.innerText = 'Login';
+			title.innerText = 'Log in';
 			title.className = 'titulo';
 			this.shadowRoot.appendChild(title);
 
@@ -139,7 +145,6 @@ class Login extends HTMLElement {
 			container?.appendChild(save4)
 			container?.appendChild(hr2)
 			this.shadowRoot.appendChild(containerHR);
-
 
 		}
 	}
