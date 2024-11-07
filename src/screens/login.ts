@@ -72,9 +72,9 @@ class Login extends HTMLElement {
 						</div>
 					</div>
 					<p class="question">Haven't registered? What are you waiting for?</p>
-					<a  class="register">Sign up</a>
+					<a id="register" class="register">Sign up</a>
 					<div class="img-back">
-						<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/Backup/src/Recursos/Group%2085.png?raw=true" alt="back" class="back-img">
+						<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/Group%20175.png?raw=true" alt="back" class="back-img">
 					</div>
     			</section>
 			`;
