@@ -95,7 +95,7 @@ class Register extends HTMLElement {
 			save.addEventListener('click', this.submitForm);
 			this.shadowRoot.appendChild(save);
 
-			const login = this.ownerDocument.createElement('buttom');
+			const login = this.ownerDocument.createElement('button');
 			login.innerText = 'Login';
 			login?.addEventListener('click',() =>  {
                 dispatch(navigate(Screens.LOGIN))

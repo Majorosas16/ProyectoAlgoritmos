@@ -1,6 +1,7 @@
 import '../src/screens/registro'
 import '../src/screens/dashboard';
 import '../src/screens/login';
+import '../src/screens/createPost';
 import { addObserver, appState } from '../src/store/store';
 import { Screens } from '../src/types/store';
 
@@ -35,12 +36,12 @@ class AppContainer extends HTMLElement {
 					break;
 
 				case Screens.FORMREVIEW:
-					const formReview = this.ownerDocument.createElement('createpost-component');
+					const formReview = this.ownerDocument.createElement('create-post');
 					this.shadowRoot.appendChild(formReview);
 					break
 				default:
 			}
-			console.log(appState);
+			// console.log(appState);
 		}
 	}
 }
