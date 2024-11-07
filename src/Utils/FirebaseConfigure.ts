@@ -1,4 +1,4 @@
-export const firebaseConfig = {
+export const firebaseConfig = { // llave
     apiKey: "AIzaSyDCB2QULYDJ68gf3XhKWORkiq1Ec2vQg08",
     authDomain: "proyectofinalalgo.firebaseapp.com",
     projectId: "proyectofinalalgo",
