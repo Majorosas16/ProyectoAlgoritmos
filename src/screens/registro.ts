@@ -2,13 +2,15 @@ import { dispatch } from '../store/store';
 import { navigate } from '../store/actions';
 import { Screens } from '../types/store';
 import { registerUser } from '../utils/Firebase';
+import { credentials } from '../types/product';
 
-const credentials = {
-	email: '',
-	password: '',
-	name: '',
-	age: '',
-};
+// const credentials = {
+// 	email: '',
+// 	password: '',
+// 	name: '',
+// 	age: '',
+//  bio: ''
+// };
 
 class Register extends HTMLElement {
 	constructor() {
@@ -32,8 +34,12 @@ class Register extends HTMLElement {
 		credentials.name = e.target.value;
 	}
 
-	changeAge(e: any) {
-		credentials.age = e.target.value;
+	changeConfirmPassword(e: any) {
+		credentials.password = e.target.value;
+	}
+
+	changeBio(e: any) {
+		credentials.bio = e.target.value;
 	}
 
 	async submitForm() {
@@ -61,22 +67,22 @@ class Register extends HTMLElement {
 
 			const userName = this.ownerDocument.createElement('input');
 			userName.placeholder = 'Username';
-			userName.addEventListener('change', this.changeEmail);
+			userName.addEventListener('change', this.changeName);
 			this.shadowRoot.appendChild(userName);
 
 			const Bio = this.ownerDocument.createElement('input');
 			Bio.placeholder = 'Biography: “Superhero Fan”';
-			Bio.addEventListener('change', this.changePassword);
+			Bio.addEventListener('change', this.changeBio);
 			this.shadowRoot.appendChild(Bio);
 
 			const password = this.ownerDocument.createElement('input');
 			password.placeholder = 'Password';
-			password.addEventListener('change', this.changeName);
+			password.addEventListener('change', this.changePassword);
 			this.shadowRoot.appendChild(password);
 
 			const ConfirmPassword = this.ownerDocument.createElement('input');
 			ConfirmPassword.placeholder = 'Confirm password';
-			ConfirmPassword.addEventListener('change', this.changeAge);
+			ConfirmPassword.addEventListener('change', this.changeConfirmPassword);
 			this.shadowRoot.appendChild(ConfirmPassword);
 
 			const save = this.ownerDocument.createElement('button');

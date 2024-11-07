@@ -4,6 +4,8 @@ import { getUser } from '../utils/Firebase';
 import '../components/ReviewCard/reviewcard'
 import ReviewCard from '../components/ReviewCard/reviewcard'
 import { Attribute } from '../types/product';
+import { credentials } from '../types/product';
+import { review } from '../types/product';
 
 
 import * as components from "../components/indexPadre";
@@ -24,14 +26,6 @@ class Dashboard extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-
-        // moviesdata.forEach(element => {
-        //     const movieCard = this.ownerDocument.createElement("movie-component") as Movie;
-        //     movieCard.setAttribute(Attribute.image, element.images.poster1);
-        //     movieCard.setAttribute(Attribute.namemovie, element.name);
-        //     movieCard.setAttribute(Attribute.releasedate, `${Number(element.releaseDate.year)}`)
-        //     this.arrayMovie.push(movieCard);
-        // })
     }
     connectedCallback() {
         this.render();
@@ -71,57 +65,50 @@ class Dashboard extends HTMLElement {
             const container = document.createElement('div');
             container.classList.add('containerCards');
             
-            if (container) {
-                this.arrayMovie.forEach((element) => {
-                    container.appendChild(element);
-                    secCards?.appendChild(container);
-                });
-            } else {
-                console.error('elements no found');
-            }
-
-
-            if (container) {
-                this.arraySeries.forEach((element) => {
-                    container.appendChild(element);
-                    secCards?.appendChild(container);
-                });
-            } else {
-                console.error('elements no found');
-            }
+            // if (container) {
+            //     this.arraySeries.forEach((element) => {
+            //         container.appendChild(element);
+            //         secCards?.appendChild(container);
+            //     });
+            // } else {
+            //     console.error('elements no found');
+            // }
             
         const logoutBtn = this.ownerDocument.createElement('button');
 		logoutBtn.innerText = 'Logout';
 		logoutBtn.addEventListener('click', this.logout);
 		this.shadowRoot?.appendChild(logoutBtn);
             
-            
-            const review = await getProducts();  //referencia de la data que está en firebase
-            const user = await getUser(); //referencia de la data que está en firebase
+        const review = await getProducts();  //referencia de la data que está en firebase
+        const user = await getUser(); //referencia de la data que está en firebase
 
-            review?.forEach((element) => {
-                user?.forEach((element2) =>{
-                    const reviewCard = this.ownerDocument.createElement("review-component") as ReviewCard;
-                    reviewCard.setAttribute(Attribute.imageprofile, element.image);
-                    reviewCard.setAttribute(Attribute.user, element.name);
-                    movieCard.setAttribute(Attribute.releasedate, `${Number(element.releaseDate.year)}`)
-                    this.arrayMovie.push(movieCard); 
-                })
-
+        review?.forEach((elementReview) => {
+            user?.forEach((elementUser) =>{
+                const reviewCard = this.ownerDocument.createElement("review-component") as ReviewCard;
+                reviewCard.setAttribute(Attribute.imageprofile, elementUser.image);
+                reviewCard.setAttribute(Attribute.user, elementUser.name);
+                reviewCard.setAttribute(Attribute.bio, elementUser.bio);
+                reviewCard.setAttribute(Attribute.imagecover, elementReview.image);
+                reviewCard.setAttribute(Attribute.titlereview, elementReview.title);
+                reviewCard.setAttribute(Attribute.rating, elementReview.rating);
+                reviewCard.setAttribute(Attribute.dateadded, elementReview.dateadded);
+                this.arrayReview.push(reviewCard); 
             })
+
+        })
+        if (container) {
+            this.arrayReview.forEach((element) => {
+                container.appendChild(element);
+                secCards?.appendChild(container);
+            });
+        } else {
+            console.error('elements no found');
+        }
+            
+
         }
     }
 }
 
 customElements.define('app-dashboard', Dashboard);
 export default Dashboard;
-
-// export enum Attribute {
-//     "imageprofile" = "imageprofile",
-//     "user" = "user",
-//     "bio" = "bio",
-//     "imagecover" = "imagecover",
-//     "titlereview" = "titlereview",
-//     "rating" = "rating",
-//     "dateadded" = "dateadded",
-// }

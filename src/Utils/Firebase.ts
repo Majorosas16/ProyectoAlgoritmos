@@ -64,6 +64,7 @@ export const getProducts = async () => { // utilidad que obtiene productos
 		});
 
 		return data; // retorna la data con los datos que solo me importan
+
 	} catch (error) {
 		console.error('Error getting documents', error);
 	}
@@ -105,6 +106,7 @@ export const getUser = async () => { // utilidad que obtiene productos
 		});
 
 		return data; // retorna la data con los datos que solo me importan
+		
 	} catch (error) {
 		console.error('Error getting documents', error);
 	}

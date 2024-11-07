@@ -1,12 +1,13 @@
 import { addProduct } from "../utils/Firebase";
+import { review } from "../types/product";
 
-const review = { //dummie o esta inicial
-    title: '',
-    name: '',
-    rating: 1,
-    image: '',
-    review: ''
-}
+// const review = { //dummie o esta inicial
+//     title: '',
+//     name: '',
+//     rating: 1,
+//     image: '',
+//     review: ''
+// }
 
 class CreatePost extends HTMLElement {
     constructor() {

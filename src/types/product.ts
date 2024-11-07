@@ -12,3 +12,19 @@ export enum Attribute {
     "rating" = "rating",
     "dateadded" = "dateadded",
 }
+
+ export const credentials = {
+	email: '',
+	password: '',
+	name: '',
+     age: '',
+    bio : ''
+ };
+
+ export const review = { //dummie o esta inicial
+    title: '',
+    name: '',
+    rating: 1,
+    image: '',
+    review: ''
+}
