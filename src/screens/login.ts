@@ -42,6 +42,12 @@ class Login extends HTMLElement {
     			</section>
 			`;
 
+			const logo = this.ownerDocument.createElement('img');
+			logo.src = 'https://i.pinimg.com/736x/f3/16/66/f31666a63ead6dcefaef107523851ff8.jpg';
+			logo.alt = 'Logo'; 
+			logo.className = 'logo-img'; 
+			this.shadowRoot.appendChild(logo);
+
 			const title = this.ownerDocument.createElement('h1');
 			title.innerText = 'Login';
 			title.className = 'titulo';
@@ -109,9 +115,14 @@ class Login extends HTMLElement {
 			`;
 			this.shadowRoot.appendChild(userIcon);
 
+			const save5 = this.ownerDocument.createElement('a');
+			save5.innerText = 'Haven`t registered? What are you waiting for?';
+			save5.className = 'save5';
+			save5.addEventListener('change', this.changePassword);
+			this.shadowRoot.appendChild(save5);
 
 			const register = this.ownerDocument.createElement('button');
-			register.innerText = 'Registro';
+			register.innerText = 'Sign up';
 			register.className = 'registro';
 			register?.addEventListener('click',() =>  {
                 dispatch(navigate(Screens.REGISTER))
