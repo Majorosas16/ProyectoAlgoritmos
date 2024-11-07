@@ -2,6 +2,7 @@ import { dispatch } from '../store/store';
 import { navigate } from '../store/actions';
 import { Screens } from '../types/store';
 import { loginUser } from '../utils/Firebase';
+import styles from './login.css';
 
 const credentials = {
 	email: '',
@@ -28,122 +29,72 @@ class Login extends HTMLElement {
 
 	submitForm() {
 		loginUser(credentials.email, credentials.password);
-		window.location.reload();
 	}
 
 	async render() {
-
 		if (this.shadowRoot) {
-			this.shadowRoot.innerHTML = `<link rel="stylesheet" href="../src/screens/loginStyle.css">
+			this.shadowRoot.innerHTML = `
+			    <link rel="stylesheet" href="./loginStyle.css">
 				<section class="container">
         			<div class="img-logo">
-					
+						<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/Backup/src/Recursos/Group%2085.png?raw=true" alt="Logo" class="logo-img">
+					</div>
+					<h1 class="titulo">Login</h1>
+					<div class="inputs">
+						<input id="email" type="email" placeholder="Correo electrónico" class="email">
+						<input id="password" type="password" placeholder="Contraseña" class="password">
+					</div>
+					<div class="forgot-container">
+						<a class="forgot">Forgot password?</a>
+					</div>
+					<button id="save" class="iniciarSesion">Iniciar sesión</button>
+					<div class="remember-container">
+						<input type="checkbox" id="rememberMe" class="remember-checkbox">
+						<label for="rememberMe" class="remember-label">Remember me</label>
+					</div>
+					<hr class="divider">
+					<p class="or-sign-in">or sign in with</p>
+					<hr class="divider">
+					<div class="icons-container">
+						<!-- SVG icons for social media login options -->
+						
+						<div class="icon google-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 128 128"><path fill="#fff" d="M44.59 4.21a63.28 63.28 0 0 0 4.33 120.9a67.6 67.6 0 0 0 32.36.35a57.13 57.13 0 0 0 25.9-13.46a57.44 57.44 0 0 0 16-26.26a74.33 74.33 0 0 0 1.61-33.58H65.27v24.69h34.47a29.72 29.72 0 0 1-12.66 19.52a36.16 36.16 0 0 1-13.93 5.5a41.29 41.29 0 0 1-15.1 0A37.16 37.16 0 0 1 44 95.74a39.3 39.3 0 0 1-14.5-19.42a38.31 38.31 0 0 1 0-24.63a39.25 39.25 0 0 1 9.18-14.91A37.17 37.17 0 0 1 76.13 27a34.28 34.28 0 0 1 13.64 8q5.83-5.8 11.64-11.63c2-2.09 4.18-4.08 6.15-6.22A61.22 61.22 0 0 0 87.2 4.59a64 64 0 0 0-42.61-.38z"/><path fill="#e33629" d="M44.59 4.21a64 64 0 0 1 42.61.37a61.22 61.22 0 0 1 20.35 12.62c-2 2.14-4.11 4.14-6.15 6.22Q95.58 29.23 89.77 35a34.28 34.28 0 0 0-13.64-8a37.17 37.17 0 0 0-37.46 9.74a39.25 39.25 0 0 0-9.18 14.91L8.76 35.6A63.53 63.53 0 0 1 44.59 4.21z"/><path fill="#f8bd00" d="M3.26 51.5a62.93 62.93 0 0 1 5.5-15.9l20.73 16.09a38.31 38.31 0 0 0 0 24.63q-10.36 8-20.73 16.08a63.33 63.33 0 0 1-5.5-40.9z"/><path fill="#587dbd" d="M65.27 52.15h59.52a74.33 74.33 0 0 1-1.61 33.58a57.44 57.44 0 0 1-16 26.26c-6.69-5.22-13.41-10.4-20.1-15.62a29.72 29.72 0 0 0 12.66-19.54H65.27c-.01-8.22 0-16.45 0-24.68z"/><path fill="#319f43" d="M8.75 92.4q10.37-8 20.73-16.08A39.3 39.3 0 0 0 44 95.74a37.16 37.16 0 0 0 14.08 6.08a41.29 41.29 0 0 0 15.1 0a36.16 36.16 0 0 0 13.93-5.5c6.69 5.22 13.41 10.4 20.1 15.62a57.13 57.13 0 0 1-25.9 13.47a67.6 67.6 0 0 1-32.36-.35a63 63 0 0 1-23-11.59A63.73 63.73 0 0 1 8.75 92.4z"/></svg>
+						</div>
+						<div class="icon facebook-icon">
+							<svg width="800px" height="800px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none">
+								<path fill="#1877F2" d="M15 8a7 7 0 00-7-7 7 7 0 00-1.094 13.915v-4.892H5.13V8h1.777V6.458c0-1.754 1.045-2.724 2.644-2.724.766 0 1.567.137 1.567.137v1.723h-.883c-.87 0-1.14.54-1.14 1.093V8h1.941l-.31 2.023H9.094v4.892A7.001 7.001 0 0015 8z"/>
+								<path fill="#ffffff" d="M10.725 10.023L11.035 8H9.094V6.687c0-.553.27-1.093 1.14-1.093h.883V3.87s-.801-.137-1.567-.137c-1.6 0-2.644.97-2.644 2.724V8H5.13v2.023h1.777v4.892a7.037 7.037 0 002.188 0v-4.892h1.63z"/>
+							</svg>
+						</div>
+						<div class="icon user-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 16 16"><defs><path id="biApple0" d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516c.024.034 1.52.087 2.475-1.258c.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422c.212-2.189 1.675-2.789 1.698-2.854c.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116c-.508.139-1.653.589-1.968.607c-.316.018-1.256-.522-2.267-.665c-.647-.125-1.333.131-1.824.328c-.49.196-1.422.754-2.074 2.237c-.652 1.482-.311 3.83-.067 4.56c.244.729.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899c.319.232 1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472c.357.013 1.061.154 1.782.539c.571.197 1.111.115 1.652-.105c.541-.221 1.324-1.059 2.238-2.758c.347-.79.505-1.217.473-1.282Z"/></defs><g fill="currentColor"><use href="#biApple0"/><use href="#biApple0"/></g></svg>
+						</div>
+					</div>
+					<p class="question">Haven't registered? What are you waiting for?</p>
+					<a  class="register">Sign up</a>
+					<div class="img-back">
+						<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/Backup/src/Recursos/Group%2085.png?raw=true" alt="back" class="back-img">
 					</div>
     			</section>
 			`;
 
-			const logo = this.ownerDocument.createElement('img');
-			logo.src = 'https://i.pinimg.com/736x/f3/16/66/f31666a63ead6dcefaef107523851ff8.jpg';
-			logo.alt = 'Logo'; 
-			logo.className = 'logo-img'; 
-			this.shadowRoot.appendChild(logo);
+			// Event listeners
+			const pEmail = this.shadowRoot?.querySelector('#email');
+			pEmail?.addEventListener('change', this.changeEmail.bind(this));
 
-			const title = this.ownerDocument.createElement('h1');
-			title.innerText = 'Login';
-			title.className = 'titulo';
-			this.shadowRoot.appendChild(title);
+			const pPassword = this.shadowRoot?.querySelector('#password');
+			pPassword?.addEventListener('change', this.changePassword.bind(this));
 
-			const pName = this.ownerDocument.createElement('input');
-			pName.placeholder = 'Correo electronico';
-			pName.className = 'email';
-			pName.addEventListener('change', this.changeEmail);
-			this.shadowRoot.appendChild(pName);
+			const save = this.shadowRoot?.querySelector('#save');
+			save?.addEventListener('click', this.submitForm.bind(this));
 
-			const pPrice = this.ownerDocument.createElement('input');
-			pPrice.placeholder = 'Contraseña';
-			pPrice.className = 'password';
-			pPrice.addEventListener('change', this.changePassword);
-			this.shadowRoot.appendChild(pPrice);
-
-			const forgot = this.ownerDocument.createElement('a');
-			forgot.innerText = 'Forgot password?';
-			forgot.className = 'forgot';
-			forgot.addEventListener('change', this.changePassword);
-			this.shadowRoot.appendChild(forgot);
-
-			const save2 = this.ownerDocument.createElement('button');
-			save2.innerText = '';
-			save2.className = 'save2';
-			save2.addEventListener('change', this.changePassword);
-			this.shadowRoot.appendChild(save2);
-
-			const save3 = this.ownerDocument.createElement('a');
-			save3.innerText = 'Remember me';
-			save3.className = 'save3';
-			save3.addEventListener('change', this.changePassword);
-			this.shadowRoot.appendChild(save3);
-
-			const save = this.ownerDocument.createElement('button');
-			save.innerText = 'Iniciar sesión';
-			save.className = 'iniciarSesion';
-			save.addEventListener('click', this.submitForm);
-			this.shadowRoot.appendChild(save);
-
-			const hr = this.ownerDocument.createElement('hr');
-			hr.className = 'hr';
-			this.shadowRoot.appendChild(hr);
-
-			const save4 = this.ownerDocument.createElement('a');
-			save4.innerText = 'or sign in with';
-			save4.className = 'save4';
-			save4.addEventListener('change', this.changePassword);
-			this.shadowRoot.appendChild(save4);
-
-			const hr2 = this.ownerDocument.createElement('hr');
-			hr.className = 'hr';
-			this.shadowRoot.appendChild(hr2);
-
-			const userIcon = this.ownerDocument.createElement('iconos');
-			userIcon.className = 'user-icon';
-			userIcon.innerHTML = `
-
-			<?xml version="1.0" ?><svg height="72" viewBox="0 0 72 72" width="72" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M36,72 L36,72 C55.882251,72 72,55.882251 72,36 L72,36 C72,16.117749 55.882251,-3.65231026e-15 36,0 L36,0 C16.117749,3.65231026e-15 -2.4348735e-15,16.117749 0,36 L0,36 C2.4348735e-15,55.882251 16.117749,72 36,72 Z" fill="#000"/><path d="M18,26.1623226 L18,46.5476129 C18,47.6566452 18.8117419,48.5554839 19.9300645,48.5554839 L51.7447742,48.5554839 C52.8619355,48.5554839 53.6748387,47.6461935 53.6748387,46.5476129 L53.6748387,26.1623226 C53.6748387,24.9452903 52.947871,24 51.7447742,24 L19.9300645,24 C18.6805161,24 18,24.9685161 18,26.1623226 M20.9334194,27.9379355 C20.9334194,27.4467097 21.2307097,27.1656774 21.7056774,27.1656774 C21.9994839,27.1656774 33.560129,34.4910968 34.2603871,34.9207742 L36.0696774,36.0460645 C36.6433548,35.6616774 37.2193548,35.3330323 37.8139355,34.9347097 C39.0274839,34.1589677 49.8251613,27.1656774 50.1224516,27.1656774 C50.5985806,27.1656774 50.8947097,27.4467097 50.8947097,27.9379355 C50.8947097,28.4581935 49.8925161,28.9749677 49.239871,29.3732903 C45.1393548,31.8723871 41.04,34.5967742 36.980129,37.1887742 C36.7432258,37.3490323 36.2845161,37.6916129 35.9407742,37.6393548 C35.5575484,37.580129 23.7936774,30.0224516 21.6534194,28.7636129 C21.3317419,28.5743226 20.9334194,28.4012903 20.9334194,27.9379355" fill="#FFF"/></g></svg>
-
-			<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="56.693px" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 512 512" width="56.693px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M512,256c0,-141.385 -114.615,-256 -256,-256c-141.385,0 -256,114.615 -256,256c0,127.777 93.616,233.685 216,252.89l0,-178.89l-65,0l0,-74l65,0l0,-56.4c0,-64.16 38.219,-99.6 96.695,-99.6c28.009,0 57.305,5 57.305,5l0,63l-32.281,0c-31.801,0 -41.719,19.733 -41.719,39.978l0,48.022l71,0l-11.35,74l-59.65,0l0,178.89c122.385,-19.205 216,-125.113 216,-252.89Z" style="fill:#1877f2;fill-rule:nonzero;"/><path d="M355.65,330l11.35,-74l-71,0l0,-48.022c0,-20.245 9.917,-39.978 41.719,-39.978l32.281,0l0,-63c0,0 -29.297,-5 -57.305,-5c-58.476,0 -96.695,35.44 -96.695,99.6l0,56.4l-65,0l0,74l65,0l0,178.89c13.033,2.045 26.392,3.11 40,3.11c13.608,0 26.966,-1.065 40,-3.11l0,-178.89l59.65,0Z" style="fill:#fff;fill-rule:nonzero;"/></g></svg>
-
-			<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg enable-background="new 0 0 56.693 56.693" height="56.693px" id="Layer_1" version="1.1" viewBox="0 0 56.693 56.693" width="56.693px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.347,5.155c-13.6,0-24.625,11.025-24.625,24.625c0,13.602,11.025,24.625,24.625,24.625  c13.6,0,24.625-11.023,24.625-24.625C52.972,16.18,41.946,5.155,28.347,5.155z M29.759,15.141c1.117-1.311,3.006-2.283,4.564-2.346  c0.199,1.816-0.533,3.637-1.613,4.947c-1.084,1.309-2.857,2.328-4.598,2.193C27.878,18.157,28.755,16.301,29.759,15.141z   M38.626,39.94c-1.293,1.889-2.633,3.771-4.744,3.809c-2.076,0.039-2.744-1.23-5.115-1.23c-2.373,0-3.115,1.193-5.08,1.27  c-2.037,0.076-3.589-2.037-4.892-3.92c-2.665-3.848-4.698-10.875-1.964-15.619c1.354-2.358,3.78-3.846,6.411-3.887  c2.004-0.037,3.893,1.35,5.115,1.35c1.225,0,3.521-1.666,5.936-1.42c1.01,0.041,3.846,0.406,5.668,3.071  c-0.146,0.092-3.387,1.977-3.348,5.902c0.043,4.689,4.113,6.246,4.16,6.27C40.735,35.642,40.12,37.757,38.626,39.94z"/></svg>
-			`;
-			this.shadowRoot.appendChild(userIcon);
-
-			const save5 = this.ownerDocument.createElement('a');
-			save5.innerText = 'Haven`t registered? What are you waiting for?';
-			save5.className = 'save5';
-			save5.addEventListener('change', this.changePassword);
-			this.shadowRoot.appendChild(save5);
-
-			const register = this.ownerDocument.createElement('button');
-			register.innerText = 'Sign up';
-			register.className = 'registro';
-			register?.addEventListener('click',() =>  {
-                dispatch(navigate(Screens.REGISTER))
-            });
-			this.shadowRoot.appendChild(register);
-
-			const container = this.shadowRoot?.querySelector('.botoncito') as HTMLElement;
-			container?.appendChild(save3)
-			container?.appendChild(save2)
-			this.shadowRoot.appendChild(container);
-
-			const containerHR = this.shadowRoot?.querySelector('.folderHR') as HTMLElement;
-			container?.appendChild(hr)
-			container?.appendChild(save4)
-			container?.appendChild(hr2)
-			this.shadowRoot.appendChild(containerHR);
-
-
+			const redirectToRegister = this.shadowRoot?.querySelector('#register');
+			redirectToRegister?.addEventListener('click', () => {
+				dispatch(navigate(Screens.REGISTER));
+			});
 		}
 	}
 }
 
-customElements.define('app-login', Login);
-export default Login;
+customElements.define('app-login', Login)

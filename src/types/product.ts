@@ -16,6 +16,7 @@ export enum Attribute {
  export const credentials = {
 	email: '',
 	password: '',
+    confirmPassword: '',
 	name: '',
     bio : ''
  };

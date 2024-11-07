@@ -25,25 +25,31 @@ class Register extends HTMLElement {
 		credentials.email = e.target.value;
 	}
 
-	changePassword(e: any) {
-		credentials.password = e.target.value;
-	}
-
 	changeName(e: any) {
 		credentials.name = e.target.value;
 	}
 
-	changeConfirmPassword(e: any) {
+	changePassword(e: any) {
 		credentials.password = e.target.value;
 	}
+    changeConfirmPassword(e: any) {
+		credentials.confirmPassword = e.target.value;
+	}
+
 
 	changeBio(e: any) {
 		credentials.bio = e.target.value;
 	}
 
 	async submitForm() {
-		const resp = await registerUser(credentials);
-		resp ? dispatch(navigate(Screens.LOGIN)) : alert('No se pudo crear el usuario');
+		console.log(credentials.password,credentials.confirmPassword);
+		
+		if(credentials.password === credentials.confirmPassword){
+			const resp = await registerUser(credentials);
+			resp ? dispatch(navigate('DASHBOARD' as Screens)) : alert('No se pudo crear el usuario');
+		}else{
+			alert("No coinciden las contraseñas")
+		}
 	}
 
 	async render() {
