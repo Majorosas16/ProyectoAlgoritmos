@@ -30,7 +30,7 @@ class Nav extends HTMLElement {
                     <div id="nav-buttons"></div>
                 </section>
                 <div class="profile">
-                    <img src="" alt="" class="profile-img">
+                    <img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/person.png?raw=true" alt="Profile User Picture" class="profile-img">
                 </div>
             </nav>
             `;
