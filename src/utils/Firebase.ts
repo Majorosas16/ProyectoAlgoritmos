@@ -129,27 +129,34 @@ export const loginUser = async (email: string, password: string) => {
 	}
 };
 
-export const uploadFile = async (file:File, id:string) => { //que reciba el archivo, el id del usuario
-	const { storage } = await getFirebaseInstance ();
-	const { ref, uploadBytes } = await import('firebase/storage');
+export const uploadFile = async (file: File, id: string) => {
+		const { storage } = await getFirebaseInstance();
+		const { ref , uploadBytes } = await import('firebase/storage');
 
-	const storageRef = ref (storage,'imagesProfile/' + id); //Nombre de la carpeta y el nombre de la imagen va a ser del id del usuario
-	uploadBytes(storageRef, file).then((snapshot)=>{ //file es ya la imagen o el file
-		console.log('File uploaded');
-		
-	}) 
-}
-
-export const getFile = async (id: string) =>{
-	const { storage } = await getFirebaseInstance ();
-	const { ref, getDownloadURL } = await import('firebase/storage');
-
-	const storageRef = ref (storage,'imagesProfile/' + id);
-	const urlImg= await getDownloadURL (ref(storageRef))
-	.then((url)=>{
-		return url; // se retorna la url a la constante urlImg
-	}).catch((error)=>{
-		console.error(error);
-	});
-	return urlImg; //el link de descarga 
+		const storageRef = ref(storage, 'imagesCover/' + id);
+		uploadBytes(storageRef, file).then((snapshot) =>{
+			console.log('File uploaded');
+			
+		});
 };
+
+export const getFile = async (id: string) => {
+	const { storage } = await getFirebaseInstance();
+	const { ref , getDownloadURL } = await import('firebase/storage');
+
+	const storageRef = ref(storage, 'imagesCover/' + id);
+	const urlImg = await getDownloadURL (ref(storageRef))
+	.then((url)=>{
+		return url;
+	})
+	.catch((error) =>{
+		console.error(error);
+		
+	});
+
+	return urlImg; //retorna la url
+};
+
+
+
+

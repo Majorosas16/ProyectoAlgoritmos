@@ -9,12 +9,6 @@ class ResponsiveNav extends HTMLElement {
         this.render();
     }
 
-    logout() {
-		indexedDB.deleteDatabase('firebase-heartbeat-database');
-		indexedDB.deleteDatabase('firebaseLocalStorageDb');
-		window.location.reload();
-	}
-
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
@@ -58,12 +52,6 @@ class ResponsiveNav extends HTMLElement {
             </nav>
             `;
         }
-
-        const logoutBtn = this.ownerDocument.createElement('button');
-        logoutBtn.className = 'Log-out'
-            logoutBtn.innerText = 'Log out';
-            logoutBtn.addEventListener('click', this.logout);
-            this.shadowRoot?.appendChild(logoutBtn);
     }
 }
 

@@ -34,16 +34,6 @@ body {
     align-items: center;
 }
 
-.Log-out {
-    padding: 15px; 
-    border-left: 2px solid #000000;
-    border-top: 2px solid #000000; 
-    border-bottom: 4px solid #000000; 
-    border-right: 4px solid #000000; 
-    border-radius: 0.8rem; font-size: 1rem; 
-    width: 100%;
-}
-
 .logo{
     transition: all .3s;
     cursor: pointer;
@@ -58,7 +48,7 @@ body {
     height: 70px;
 }
 
-.nav-buttons {
+#nav-buttons {
     display: flex;
     gap: 9%;
     transition: all .3s;
@@ -84,18 +74,12 @@ body {
     border: 2px solid black;
 }
 
-
+/* Ocultar el nav normal en pantallas pequeñas */
 @media (max-width: 768px) {
     .navbar {
         display: none;
     }
     .nav-buttons {
         display: none;
-    }
-}
-
-@media (min-width: 769px) {
-    .responsive-navbar {
-        display: none !important;
     }
 }

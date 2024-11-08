@@ -13,7 +13,6 @@ class CreatePost extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        alert("CREATE A POST")
     }
 
     changeTitle(e:any) {
@@ -39,14 +38,13 @@ class CreatePost extends HTMLElement {
     submitForm(e: any) {
 
         addProduct(review); // enviar las los value a la data
-        dispatch(navigate(Screens.FORMREVIEW));
+        dispatch(navigate(Screens.DASHBOARD));
     }
 
    render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../src/screens/createPost.css">
-            <responsive-nav></responsive-nav>
             <section class="container">
                     <h1 class="titulo">Create a Review</h1>
                     <form id="Form">
@@ -85,7 +83,6 @@ class CreatePost extends HTMLElement {
             image.addEventListener('change', () =>{
                 console.log(image.files?.[0]);
                 const file = image.files?.[0];
-                
                 if(file) uploadFile (file,appState.user);
             });
             image.required
