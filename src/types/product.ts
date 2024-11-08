@@ -1,16 +1,23 @@
 export interface Product {
-	name: string;
-	price: number;
+    user: string,
+    bio: string,
+    imagecover: string,
+    titlereview: string,
+    rating: string,
+    name: string,
+    review: string
 }
 
 export enum Attribute {
-    "imageprofile" = "imageprofile",
+    // "imageprofile" = "imageprofile",
     "user" = "user",
     "bio" = "bio",
     "imagecover" = "imagecover",
     "titlereview" = "titlereview",
     "rating" = "rating",
     "dateadded" = "dateadded",
+    "name" ="name",
+    "review"="review"
 }
 
  export const credentials = {

@@ -1,15 +1,9 @@
 import styles from './reviewcard.css'
 import { Attribute } from '../../types/product';
-
-// export enum Attribute {
-//     "imageprofile" = "imageprofile",
-//     "user" = "user",
-//     "bio" = "bio",
-//     "imagecover" = "imagecover",
-//     "titlereview" = "titlereview",
-//     "rating" = "rating",
-//     "dateadded" = "dateadded",
-// }
+import { getProducts } from '../../utils/Firebase';
+import { getUser } from '../../utils/Firebase';
+import { getFile } from '../../utils/Firebase';
+import { appState } from '../../store/store';
 
 class ReviewCard extends HTMLElement {
 
@@ -20,6 +14,9 @@ class ReviewCard extends HTMLElement {
     titlereview?: string;
     rating?: number;
     dateadded?: any;
+    name?:string;
+    review?:string;
+    arrayReview: ReviewCard[] = [];
 
     static get observedAttributes(){
         return Object.keys(Attribute);
@@ -64,7 +61,7 @@ class ReviewCard extends HTMLElement {
             return `hace ${daysElapsed}d`;
         }
 
-    render() {
+    async render() {
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../src/components/ReviewCard/reviewcard.css">
@@ -106,7 +103,6 @@ class ReviewCard extends HTMLElement {
                 </div>
             </div>
             `;
-    
             const likeIcon = this.shadowRoot.querySelector('#likeIcon svg');
     
             //falta el contador
