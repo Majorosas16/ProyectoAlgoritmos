@@ -210,13 +210,17 @@ input[type="email"], input[type="password"] {
     .responsive-image-container {
         display: flex;
         justify-content: center;
-        margin-top: 1rem;
+        align-items: center;
+        position: absolute;
+        top: -5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .responsive-image {
-        width: 100%;
-        max-width: 60rem; 
-        height: auto;
+        width: 90vw;
+        height: 70vh;
+        object-fit: fill;
     }
 
     .img-logo {
