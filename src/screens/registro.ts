@@ -14,37 +14,44 @@ class Register extends HTMLElement {
 		this.render();
 	}
 
-	changeEmail(e: any) {
-		credentials.email = e.target.value;
+	
+	changeEmail(e: Event) {
+		credentials.email = (e.target as HTMLInputElement).value;
 	}
 
-	changeName(e: any) {
-		credentials.name = e.target.value;
+	changeName(e: Event) {
+		credentials.name = (e.target as HTMLInputElement).value;
 	}
 
-	changePassword(e: any) {
-		credentials.password = e.target.value;
+	changePassword(e: Event) {
+		credentials.password = (e.target as HTMLInputElement).value;
 	}
 
-	changeConfirmPassword(e: any) {
-		credentials.confirmPassword = e.target.value;
+	changeConfirmPassword(e: Event) {
+		credentials.confirmPassword = (e.target as HTMLInputElement).value;
 	}
 
-	changeBio(e: any) {
-		credentials.bio = e.target.value;
+	changeBio(e: Event) {
+		credentials.bio = (e.target as HTMLInputElement).value;
 	}
 
+	
 	async submitForm() {
 		console.log(credentials.password, credentials.confirmPassword);
 
 		if (credentials.password === credentials.confirmPassword) {
 			const resp = await registerUser(credentials);
-			resp ? dispatch(navigate('DASHBOARD' as Screens)) : alert('No se pudo crear el usuario');
+			if (resp) {
+				dispatch(navigate('DASHBOARD' as Screens));
+			} else {
+				alert('No se pudo crear el usuario');
+			}
 		} else {
 			alert("No coinciden las contraseñas");
 		}
 	}
 
+	// Renderizado del componente
 	async render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
@@ -52,24 +59,24 @@ class Register extends HTMLElement {
 				<section class="container">
 					<div class="form-section">
 						<div class="responsive-image-container">
-						<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/NewBranch/src/Recursos/Group%20176%20(2).png?raw=true" alt="Imagen Responsive" class="responsive-image">
-						 <div class="overlay-image-container">
-							<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/NewBranch/src/Recursos/Group%20177%20(3).png?raw=true" alt="Imagen Encima" class="overlay-image">
+							<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/NewBranch/src/Recursos/Group%20176%20(2).png?raw=true" alt="Imagen Responsive" class="responsive-image">
+							<div class="overlay-image-container">
+								<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/NewBranch/src/Recursos/Group%20177%20(3).png?raw=true" alt="Imagen Encima" class="overlay-image">
+							</div>
 						</div>
-					</div>
 					
 						<div class="img-logo">
 							<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/Group%2085.png?raw=true" alt="Logo" class="logo-img">
 						</div>
 						<h1 class="titulo">Join us</h1>
 						<div class="inputs">
-							<input type="email" placeholder="Email" class="email" onchange="${this.changeEmail.bind(this)}">
-							<input type="text" placeholder="Username" class="username" onchange="${this.changeName.bind(this)}">
-							<input type="text" placeholder="Biography: “Superhero Fan”" class="bio" onchange="${this.changeBio.bind(this)}">
-							<input type="password" placeholder="Password" class="password" onchange="${this.changePassword.bind(this)}">
-							<input type="password" placeholder="Confirm password" class="confirm-password" onchange="${this.changeConfirmPassword.bind(this)}">
+							<input type="email" placeholder="Email" class="email">
+							<input type="text" placeholder="Username" class="username">
+							<input type="text" placeholder="Biography: “Superhero Fan”" class="bio">
+							<input type="password" placeholder="Password" class="password">
+							<input type="password" placeholder="Confirm password" class="confirm-password">
 						</div>
-						<button class="register" onclick="${this.submitForm.bind(this)}">Sign up</button>
+						<button class="register">Sign up</button>
 						<p class="or-sign-in">Or sign in with</p>
 						<div class="icons-container">
 						<!-- SVG icons for social media login options -->
@@ -87,14 +94,39 @@ class Register extends HTMLElement {
 							<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 16 16"><defs><path id="biApple0" d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516c.024.034 1.52.087 2.475-1.258c.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422c.212-2.189 1.675-2.789 1.698-2.854c.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116c-.508.139-1.653.589-1.968.607c-.316.018-1.256-.522-2.267-.665c-.647-.125-1.333.131-1.824.328c-.49.196-1.422.754-2.074 2.237c-.652 1.482-.311 3.83-.067 4.56c.244.729.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899c.319.232 1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472c.357.013 1.061.154 1.782.539c.571.197 1.111.115 1.652-.105c.541-.221 1.324-1.059 2.238-2.758c.347-.79.505-1.217.473-1.282Z"/></defs><g fill="currentColor"><use href="#biApple0"/><use href="#biApple0"/></g></svg>
 						</div>
 					</div>
-					</div>
-					</div>
 				</section>
 			`;
-		}
 
-	
-  
+			
+			const emailInput = this.shadowRoot.querySelector('.email') as HTMLInputElement;
+			const nameInput = this.shadowRoot.querySelector('.username') as HTMLInputElement;
+			const bioInput = this.shadowRoot.querySelector('.bio') as HTMLInputElement;
+			const passwordInput = this.shadowRoot.querySelector('.password') as HTMLInputElement;
+			const confirmPasswordInput = this.shadowRoot.querySelector('.confirm-password') as HTMLInputElement;
+			const registerButton = this.shadowRoot.querySelector('.register') as HTMLButtonElement;
+
+			
+			emailInput.addEventListener('change', this.changeEmail.bind(this));
+			nameInput.addEventListener('change', this.changeName.bind(this));
+			bioInput.addEventListener('change', this.changeBio.bind(this));
+			passwordInput.addEventListener('change', this.changePassword.bind(this));
+			confirmPasswordInput.addEventListener('change', this.changeConfirmPassword.bind(this));
+
+			
+			registerButton.addEventListener('click', () => {
+				const emailValue = emailInput.value.trim();
+				const nameValue = nameInput.value.trim();
+				const passwordValue = passwordInput.value.trim();
+				const confirmValue = confirmPasswordInput.value.trim();
+
+				if (!emailValue || !nameValue || !passwordValue || !confirmValue) {
+					alert('Por favor, rellene todos los campos.');
+					return;
+				}
+
+				this.submitForm();
+			});
+		}
 	}
 }
 

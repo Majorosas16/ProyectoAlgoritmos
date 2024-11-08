@@ -45,8 +45,9 @@ class CreatePost extends HTMLElement {
    render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-                <h1>Create a Review</h1>
-                    
+            <link rel="stylesheet" href="../src/screens/createPost.css">
+            <section class="container">
+                    <h1 class="titulo">Create a Review</h1>
                     <form id="Form">
                     <p>Title</p>
                     <input id="title" type="text" required placeholder="Holy crap! that movie was...">
@@ -56,10 +57,11 @@ class CreatePost extends HTMLElement {
                     <input type="number" id="rating" name="rating" min="1" max="5" step="0.5">
                     <p>Upload a image</p>
                     <input type="file" id="photo" accept="image/*">
-                    <p>Review</p>
                     <input id="review" type="text" required placeholder="Is your turn">
                     <button id="submitButton">Publish</button>
                     </form>
+            </section>
+               
                 `;
             
             //Eventos a cada input y botón, llamo la función que cambia el estado

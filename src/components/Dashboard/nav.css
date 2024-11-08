@@ -79,4 +79,7 @@ body {
     .navbar {
         display: none;
     }
+    .nav-buttons {
+        display: none;
+    }
 }
