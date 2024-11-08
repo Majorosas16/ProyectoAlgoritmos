@@ -1,4 +1,5 @@
 import { appState } from '../store/store';
+import { review } from '../types/product';
 // import storage from './storage';
 
 let db: any;
@@ -37,8 +38,20 @@ export const addProduct = async (product: any) => { // utilidad que agrega produ
 		const { db } = await getFirebaseInstance();
 		const { collection, addDoc } = await import('firebase/firestore');
 
-		const where = collection(db, 'products'); //"vas a crear una coleccion en mi base de datos. con el nombre '...'"
-		await addDoc(where, product); //vas a guardar el producto en where
+		const where = collection(db, 'products');
+		const addproduct =  {
+			userUid: appState.user,
+			user: product.user,
+			bio: product.bio,
+			imagecover: product.imagecover,
+			titlereview: product.titlereview,
+			rating: product.rating,
+			review:product.review,
+			name:product.name,
+			dateadded: new Date().toISOString()
+
+		} //"vas a crear una coleccion en mi base de datos. con el nombre '...'"
+		await addDoc(where, addproduct); //vas a guardar el producto en where
 		console.log('Se añadió con exito');
 	} catch (error) {
 		console.error('Error adding document', error);
@@ -90,23 +103,24 @@ export const registerUser = async (credentials: any) => {
 	}
 };
 
-export const getUser = async () => { // utilidad que obtiene productos
-	try {
-		const { db } = await getFirebaseInstance();
-		const { collection, getDocs } = await import('firebase/firestore');
+export const getUser = async (uid: string) => {
+    try {
+        const { db } = await getFirebaseInstance();
+        const { doc, getDoc } = await import('firebase/firestore');
 
-		const where = collection(db, 'users');
-		const querySnapshot = await getDocs(where); // toma un captura de pantalla
-		const data: any[] = []; 
-
-		querySnapshot.forEach((doc) => { //recorre el arreglo querySnapshot
-			data.push(doc.data()); // solo quiero la data, lo que fue escrito
-		});
-
-		return data; // retorna la data con los datos que solo me importan
-
-	} catch (error) {
-		console.error('Error getting documents', error);
+        const userRef = doc(db, 'users', uid);
+        const userSnap = await getDoc(userRef);
+		console.log('estoy aqui', userRef);
+		
+        if (userSnap) {
+            return userSnap.data(); 
+        } else {
+            console.log('No such document!');
+            return null;
+        }
+    } catch (error) {
+        console.error('Error getting user data:', error);
+        return null;
 	}
 };
 
@@ -129,32 +143,66 @@ export const loginUser = async (email: string, password: string) => {
 	}
 };
 
-export const uploadFile = async (file: File, id: string) => {
-		const { storage } = await getFirebaseInstance();
-		const { ref , uploadBytes } = await import('firebase/storage');
+// export const uploadFile = async (file: File, id: string) => {
+// 		const { storage } = await getFirebaseInstance();
+// 		const { ref , uploadBytes } = await import('firebase/storage');
 
-		const storageRef = ref(storage, 'imagesCover/' + id);
-		uploadBytes(storageRef, file).then((snapshot) =>{
-			console.log('File uploaded');
+// 		const storageRef = ref(storage, 'imagesCover/' + id);
+// 		uploadBytes(storageRef, file).then((snapshot) =>{
+// 			console.log('File uploaded');
 			
-		});
+// 		});
+// };
+
+export const uploadFile = async (file: File, id: string) => {
+    const { storage } = await getFirebaseInstance();
+    const { ref, uploadBytes } = await import('firebase/storage');
+
+    // Genera un nombre único para la imagen usando un timestamp
+    const uniqueFileName = `${id}_${Date.now()}_${file.name}`;
+    const storageRef = ref(storage, 'imagesCover/' + uniqueFileName);
+
+    await uploadBytes(storageRef, file).then((snapshot) => {
+        console.log('File uploaded');
+    });
+
+    // Devuelve el nombre único del archivo subido, si lo necesitas para futuras referencias
+    return uniqueFileName; // Opcional, si necesitas el nombre para obtener la URL
 };
 
-export const getFile = async (id: string) => {
-	const { storage } = await getFirebaseInstance();
-	const { ref , getDownloadURL } = await import('firebase/storage');
+export const getFile = async (id: string): Promise<string | null> => {
+    const { storage } = await getFirebaseInstance();
+    const { ref, getDownloadURL } = await import('firebase/storage');
 
-	const storageRef = ref(storage, 'imagesCover/' + id);
-	const urlImg = await getDownloadURL (ref(storageRef))
-	.then((url)=>{
-		return url;
-	})
-	.catch((error) =>{
-		console.error(error);
-		
-	});
+    const storageRef = ref(storage, 'imagesCover/' + id);
+    
+    try {
+        const url = await getDownloadURL(storageRef);
+        return url; // Devuelve la URL si tiene éxito
+    } catch (error) {
+        console.error(error);
+        return null; // Devuelve null si ocurre un error
+    }
+};
 
-	return urlImg; //retorna la url
+export const getFiles = async (id: string): Promise<string[]> => {
+    const { storage } = await getFirebaseInstance();
+    const { ref, listAll, getDownloadURL } = await import('firebase/storage');
+
+    const storageRef = ref(storage, 'imagesCover/' + id);
+    
+    try {
+        // Obtener una lista de archivos en el directorio
+        const result = await listAll(storageRef);
+
+        // Obtener las URLs de los archivos
+        const urls = await Promise.all(result.items.map(item => getDownloadURL(item)));
+        
+        return urls; // Devolvemos un array de URLs
+    } catch (error) {
+        console.error(error);
+        return []; // Si hay error, devolvemos un array vacío
+    }
 };
 
 

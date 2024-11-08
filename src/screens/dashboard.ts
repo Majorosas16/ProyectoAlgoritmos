@@ -1,12 +1,13 @@
 import { Product } from '../types/product';
-import { getProducts } from '../utils/Firebase';
-import { getUser } from '../utils/Firebase';
 import '../components/ReviewCard/reviewcard'
 import ReviewCard from '../components/ReviewCard/reviewcard'
 import { Attribute } from '../types/product';
 import { credentials } from '../types/product';
 import { review } from '../types/product';
+import { getUser } from '../utils/Firebase';
 import { getFile } from '../utils/Firebase';
+import { getProducts } from '../utils/Firebase';
+import { AppState } from '../types/store';
 
 
 import * as components from "../components/indexPadre";
@@ -46,16 +47,12 @@ class Dashboard extends HTMLElement {
                 <link rel="stylesheet" href="../src/styles.css">
                 <nav-component></nav-component>
                 <responsive-nav></responsive-nav>
-                <section class="secCarousel">
-                    <carousel-component></carousel-component>
-                </section>
                 <section id="secCards">
                     <div class="underSec">
-                        <h1 class="fyp">For you</h1>
-                        <h1 class="xplore">Explore</h1>
                     </div>
                 </section>
                 <button>Cerrar perfil</button>
+
             `;
     
             const secCards = this.shadowRoot.querySelector("#secCards");
@@ -67,27 +64,36 @@ class Dashboard extends HTMLElement {
             logoutBtn.addEventListener('click', this.logout);
             this.shadowRoot?.appendChild(logoutBtn);
             
-            const review = await getProducts();  // referencia de la data de reviews en Firebase
-            const user = await getUser(); // referencia de la data de usuarios en Firebase
-    
-            if (review && user){
-                for (const elementReview of review) {
-                    for (const elementUser of user) {
-                        
-                        const urlImg = await getFile(elementUser.id); // URL de imagen específica de cada usuario
-                        
-                        const reviewCard = this.ownerDocument.createElement("review-component") as ReviewCard;
-                        reviewCard.setAttribute(Attribute.imageprofile, elementUser.image);
-                        reviewCard.setAttribute(Attribute.user, elementUser.name);
-                        reviewCard.setAttribute(Attribute.bio, elementUser.bio);
-                        reviewCard.setAttribute(Attribute.imagecover, String (urlImg));
-                        reviewCard.setAttribute(Attribute.titlereview, elementReview.title);
-                        reviewCard.setAttribute(Attribute.rating, elementReview.rating);
-                        reviewCard.setAttribute(Attribute.dateadded, elementReview.dateadded);
-                        this.arrayReview.push(reviewCard); 
-                    }
-                }
+            const reviews = await getProducts();  // referencia de la data de reviews en Firebase
+            const user = await getUser(appState.user); // referencia de la data de usuarios en Firebase
+
+            const userId = appState.user;
+        if (userId) {
+            const userData = await getUser(userId);
+        }
+        
+        for (const review of reviews || []) {
+            let bio = '';
+            let name = '';
+
+            console.log(review);
+            
+            if (review.userUid) {
+                const userDataPost = await getUser(review.userUid);
+                
+                name = userDataPost?.name || '';
+                bio = userDataPost?.bio || '';
             }
+           
+                        
+            const reviewCard = this.ownerDocument.createElement("review-component") as ReviewCard;
+            reviewCard.setAttribute(Attribute.user, name);
+            reviewCard.setAttribute(Attribute.bio, bio);
+            reviewCard.setAttribute(Attribute.imagecover, review.imagecover);
+            reviewCard.setAttribute(Attribute.titlereview, review.name);
+            reviewCard.setAttribute(Attribute.rating, review.rating);
+            reviewCard.setAttribute(Attribute.dateadded, review.dateadded);
+            this.arrayReview.push(reviewCard); 
 
     
             if (container) {
@@ -101,6 +107,7 @@ class Dashboard extends HTMLElement {
         }
     }
     
+}
 }
 
 customElements.define('app-dashboard', Dashboard);
