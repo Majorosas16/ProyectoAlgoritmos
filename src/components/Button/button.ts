@@ -62,6 +62,7 @@ class Button extends HTMLElement {
         }
     }
 
+
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
