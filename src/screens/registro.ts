@@ -51,6 +51,13 @@ class Register extends HTMLElement {
 				<link rel="stylesheet" href="../src/screens/registroStyle.css">
 				<section class="container">
 					<div class="form-section">
+						<div class="responsive-image-container">
+						<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/NewBranch/src/Recursos/Group%20176%20(2).png?raw=true" alt="Imagen Responsive" class="responsive-image">
+						 <div class="overlay-image-container">
+							<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/NewBranch/src/Recursos/Group%20177%20(3).png?raw=true" alt="Imagen Encima" class="overlay-image">
+						</div>
+					</div>
+					
 						<div class="img-logo">
 							<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/Group%2085.png?raw=true" alt="Logo" class="logo-img">
 						</div>

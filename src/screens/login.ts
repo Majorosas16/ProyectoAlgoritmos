@@ -38,7 +38,10 @@ class Login extends HTMLElement {
 				<section class="container">
 				<div class="form-section">
 					<div class="responsive-image-container">
-						<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/NewBranch/src/Recursos/Group%20176%20(1).png?raw=true" alt="Imagen Responsive" class="responsive-image">
+						<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/NewBranch/src/Recursos/Group%20176%20(2).png?raw=true" alt="Imagen Responsive" class="responsive-image">
+						 <div class="overlay-image-container">
+							<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/NewBranch/src/Recursos/Group%20176%20(3).png?raw=true" alt="Imagen Encima" class="overlay-image">
+						</div>
 					</div>
 
         			<div class="img-logo">
