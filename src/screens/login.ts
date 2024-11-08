@@ -2,7 +2,6 @@ import { dispatch } from '../store/store';
 import { navigate } from '../store/actions';
 import { Screens } from '../types/store';
 import { loginUser } from '../utils/Firebase';
-import styles from './login.css';
 
 const credentials = {
 	email: '',
@@ -34,24 +33,27 @@ class Login extends HTMLElement {
 	async render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-			    <link rel="stylesheet" href="./loginStyle.css">
+			
+			<link rel="stylesheet" href="../src/screens/loginStyle.css">
 				<section class="container">
+				<div class="form-section">
         			<div class="img-logo">
 						<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/Backup/src/Recursos/Group%2085.png?raw=true" alt="Logo" class="logo-img">
 					</div>
-					<h1 class="titulo">Login</h1>
+					<h1 class="titulo">Log in</h1>
 					<div class="inputs">
-						<input id="email" type="email" placeholder="Correo electrónico" class="email">
-						<input id="password" type="password" placeholder="Contraseña" class="password">
+						<input id="email" type="email" placeholder="Email" class="email">
+						<input id="password" type="password" placeholder="Password" class="password">
 					</div>
 					<div class="forgot-container">
 						<a class="forgot">Forgot password?</a>
 					</div>
-					<button id="save" class="iniciarSesion">Iniciar sesión</button>
 					<div class="remember-container">
 						<input type="checkbox" id="rememberMe" class="remember-checkbox">
 						<label for="rememberMe" class="remember-label">Remember me</label>
 					</div>
+					<button id="save" class="iniciarSesion">Sing in</button>
+					
 					<hr class="divider">
 					<p class="or-sign-in">or sign in with</p>
 					<hr class="divider">
@@ -73,10 +75,12 @@ class Login extends HTMLElement {
 					</div>
 					<p class="question">Haven't registered? What are you waiting for?</p>
 					<a id="register" class="register">Sign up</a>
-					<div class="img-back">
-						<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/Group%20175.png?raw=true" alt="back" class="back-img">
+					</div>
+					<div class="img-back-section">
+					<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/Group%20175.png?raw=true" alt="back" class="back-img">
 					</div>
     			</section>
+
 			`;
 
 			// Event listeners
