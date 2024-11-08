@@ -57,27 +57,19 @@ class Dashboard extends HTMLElement {
                 </div>
             </section>
 
-            <buttom>Cerrar perfil</buttom>
-            `;        
+            
+            `;      
+            
+            const logoutBtn = this.ownerDocument.createElement('button');
+            logoutBtn.innerText = 'Log out';
+            logoutBtn.addEventListener('click', this.logout);
+            this.shadowRoot?.appendChild(logoutBtn);
 
             const secCards = this.shadowRoot.querySelector("#secCards");
 
             const container = document.createElement('div');
             container.classList.add('containerCards');
             
-            // if (container) {
-            //     this.arraySeries.forEach((element) => {
-            //         container.appendChild(element);
-            //         secCards?.appendChild(container);
-            //     });
-            // } else {
-            //     console.error('elements no found');
-            // }
-            
-        const logoutBtn = this.ownerDocument.createElement('button');
-		logoutBtn.innerText = 'Logout';
-		logoutBtn.addEventListener('click', this.logout);
-		this.shadowRoot?.appendChild(logoutBtn);
             
         const review = await getProducts();  //referencia de la data que está en firebase
         const user = await getUser(); //referencia de la data que está en firebase

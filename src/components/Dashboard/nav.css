@@ -74,12 +74,18 @@ body {
     border: 2px solid black;
 }
 
-/* Ocultar el nav normal en pantallas pequeñas */
+
 @media (max-width: 768px) {
     .navbar {
         display: none;
     }
     .nav-buttons {
         display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .responsive-navbar {
+        display: none !important;
     }
 }

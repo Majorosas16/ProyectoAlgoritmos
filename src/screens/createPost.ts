@@ -46,6 +46,7 @@ class CreatePost extends HTMLElement {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../src/screens/createPost.css">
+            <responsive-nav></responsive-nav>
             <section class="container">
                     <h1 class="titulo">Create a Review</h1>
                     <form id="Form">
