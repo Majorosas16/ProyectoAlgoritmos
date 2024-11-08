@@ -223,6 +223,22 @@ input[type="email"], input[type="password"] {
         object-fit: fill;
     }
 
+    .overlay-image-container {
+        position: absolute;
+        top: 78%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+        z-index: 1; 
+        align-items: center;
+    }
+    
+    
+    .overlay-image {
+        width: 38vw;
+        height: auto; 
+        object-fit: contain; 
+    }
+
     .img-logo {
         display: none;
     }

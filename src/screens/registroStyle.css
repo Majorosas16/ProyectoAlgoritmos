@@ -119,3 +119,111 @@ input[type="email"], input[type="password"], input[type="text"] {
     transition: background-color 0.3s ease; 
     margin-bottom: 2rem;
 }
+
+.responsive-image-container {
+    display: none;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+
+    .responsive-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -7%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .responsive-image {
+        width: 90vw;
+        height: 70vh;
+        object-fit: fill;
+    }
+
+    .overlay-image-container {
+        position: absolute;
+        top: 78%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+        z-index: 1; 
+        align-items: center;
+    }
+    
+    
+    .overlay-image {
+        width: 38vw;
+        height: auto; 
+        object-fit: contain; 
+    }
+
+    .img-logo {
+        display: none;
+    }
+    
+    .img-back-section {
+        display: none;
+    }
+
+    
+    .remember-container {
+        display: none;
+    }
+
+    
+    .divider-container, .divider {
+        display: none;
+    }
+
+    
+    .question {
+        display: none;
+    }
+
+    
+    .form-section {
+        width: 100%;
+    }
+
+    .form-section {
+        width: 100%;
+    }
+
+    .container {
+        background: linear-gradient(to bottom, #fdfdfd0a, #522884);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        padding: 1.3rem;
+    }
+    .form-section {
+        background: linear-gradient(to bottom, #fdfdfd0a, #522884);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1.3rem;
+    }
+
+    h1.titulo {
+        font-size: 36px;
+        color: #ffffff;
+        margin-right: 17rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    
+    .or-sign-in {
+        font-size: 14px;
+        color: #ffffff;
+        text-align: center;
+        white-space: nowrap; 
+    }
+
+}
