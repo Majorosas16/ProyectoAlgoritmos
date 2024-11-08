@@ -27,11 +27,7 @@ class Nav extends HTMLElement {
                     <div class="logo">
                         <img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/FirstDelivery/src/Recursos/Icon.png?raw=true" alt="MovieMoodIcon"  class="logo-img">
                     </div>
-                    <div class="nav-buttons">
-                        <btn-component color="white" label="Favorites" textColor="#5D3B94"></btn-component>
-                        <btn-component color="white" label="Search" textColor="#5D3B94"></btn-component>
-                        <btn-component color="#5D3B94" label="Create" textColor="white"></btn-component>
-                    </div>
+                    <div id="nav-buttons"></div>
                 </section>
                 <div class="profile">
                     <img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/person.png?raw=true" alt="Profile User Picture" class="profile-img">
@@ -39,9 +35,13 @@ class Nav extends HTMLElement {
             </nav>
             `;
 
-            const containerBtn = this.shadowRoot.querySelector(".nav-buttons")
+            const containerBtn = this.shadowRoot.querySelector("#nav-buttons")
+            const pushContainerBtn = this.shadowRoot.querySelector(".navbar")
+            const sec = this.shadowRoot.querySelector(".sec")
+            const profile = this.shadowRoot.querySelector(".profile")
 
-            if (containerBtn) {
+            if (containerBtn && pushContainerBtn && sec && profile) {
+
                 const createButton = this.ownerDocument.createElement("btn-component") as Button;
                 createButton.setAttribute("color", "#5D3B94");
                 createButton.setAttribute("label", "Create");
@@ -50,11 +50,32 @@ class Nav extends HTMLElement {
                 createButton?.addEventListener('click', () => {
                     dispatch(navigate(Screens.FORMREVIEW));
                 });
+
+                const searchButton = this.ownerDocument.createElement("btn-component") as Button;
+                searchButton.setAttribute("color", "white");
+                searchButton.setAttribute("label", "Search");
+                searchButton.setAttribute("textColor", "#5D3B94");
     
+                searchButton?.addEventListener('click', () => {
+                    dispatch(navigate(Screens.DASHBOARD));
+                });
+
+                const favoritesButton = this.ownerDocument.createElement("btn-component") as Button;
+                favoritesButton.setAttribute("color", "white");
+                favoritesButton.setAttribute("label", "Favorites");
+                favoritesButton.setAttribute("textColor", "#5D3B94");
+    
+                favoritesButton?.addEventListener('click', () => {
+                    dispatch(navigate(Screens.DASHBOARD));
+                });
+    
+                containerBtn.appendChild(favoritesButton)
+                containerBtn.appendChild(searchButton)
                 containerBtn.appendChild(createButton);
-                this.shadowRoot.appendChild(containerBtn);
-            } else {
-                console.error("No se pudo encontrar el contenedor de botones");
+                sec.appendChild(containerBtn)
+                pushContainerBtn.appendChild(sec)
+                pushContainerBtn.appendChild(profile)
+                this.shadowRoot.appendChild(pushContainerBtn);
             }
         }
 
