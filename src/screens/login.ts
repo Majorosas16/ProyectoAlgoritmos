@@ -37,6 +37,10 @@ class Login extends HTMLElement {
 			<link rel="stylesheet" href="../src/screens/loginStyle.css">
 				<section class="container">
 				<div class="form-section">
+					<div class="responsive-image-container">
+						<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/NewBranch/src/Recursos/Group%20176.png?raw=true" alt="Imagen Responsive" class="responsive-image">
+					</div>
+
         			<div class="img-logo">
 						<img src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/Backup/src/Recursos/Group%2085.png?raw=true" alt="Logo" class="logo-img">
 					</div>

@@ -200,8 +200,24 @@ input[type="email"], input[type="password"] {
     object-fit: cover;
 }
 
+.responsive-image-container {
+    display: none;
+}
+
 /* Estilos responsive */
 @media (max-width: 768px) {
+
+    .responsive-image-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .responsive-image {
+        width: 100%;
+        max-width: 60rem; 
+        height: auto;
+    }
 
     .img-logo {
         display: none;
