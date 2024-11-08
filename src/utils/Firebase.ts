@@ -1,5 +1,5 @@
 import { appState } from '../store/store';
-import storage from './storage';
+// import storage from './storage';
 
 let db: any;
 let auth: any;
