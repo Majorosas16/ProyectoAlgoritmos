@@ -31,12 +31,7 @@ class Dashboard extends HTMLElement {
         this.render();
     }
 
-    logout() {
-		indexedDB.deleteDatabase('firebase-heartbeat-database');
-		indexedDB.deleteDatabase('firebaseLocalStorageDb');
-		window.location.reload();
-	}
-
+   
 
     async render() {
         if (this.shadowRoot) {
@@ -60,10 +55,6 @@ class Dashboard extends HTMLElement {
             
             `;      
             
-            const logoutBtn = this.ownerDocument.createElement('button');
-            logoutBtn.innerText = 'Log out';
-            logoutBtn.addEventListener('click', this.logout);
-            this.shadowRoot?.appendChild(logoutBtn);
 
             const secCards = this.shadowRoot.querySelector("#secCards");
 

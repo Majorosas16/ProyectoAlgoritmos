@@ -37,14 +37,6 @@ class Button extends HTMLElement {
         }
     }
 
-            // if (oldValue !== newValue) {
-        // // Comprueba si realmente cambió el valor
-        // if (name === this.color) {
-        //     this.updateStyle();
-        // } else if (name === this.label) {
-        //     this.updateLabel();
-        // }
-        // }
 
     updateStyle() {
         if (this.shadowRoot) {

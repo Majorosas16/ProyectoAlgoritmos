@@ -6,6 +6,9 @@ button {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
-    box-shadow: 9px 9px 0px -6px rgba(0,0,0,0.75);
+    border-left: 2px solid #000000;
+    border-top: 2px solid #000000; 
+    border-bottom: 4px solid #000000;
+    border-right: 4px solid #000000;
 }
 
