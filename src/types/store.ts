@@ -9,7 +9,8 @@ export enum Screens {
 	'LOGIN' = 'LOGIN',
 	'DASHBOARD' = 'DASHBOARD',
 	'REGISTER' = 'REGISTER',
-	'FORMREVIEW' = 'FORMREVIEW'
+	'FORMREVIEW' = 'FORMREVIEW',
+	'FAVORITOS' = 'FAVORITOS'
 }
 
 export enum Actions {

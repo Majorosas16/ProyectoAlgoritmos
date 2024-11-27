@@ -127,6 +127,7 @@ div p {
 div input[type="text"],
 div input[type="number"],
 div input[type="file"],
+
 div textarea {
     padding: 1rem;
     border-left: 2px solid #000000;

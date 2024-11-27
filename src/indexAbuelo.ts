@@ -2,6 +2,7 @@ import '../src/screens/registro'
 import '../src/screens/dashboard';
 import '../src/screens/login';
 import '../src/screens/createPost';
+import '../src/screens/favoritos';
 import { addObserver, appState } from '../src/store/store';
 import { Screens } from '../src/types/store';
 
@@ -38,6 +39,11 @@ class AppContainer extends HTMLElement {
 				case Screens.FORMREVIEW:
 					const formReview = this.ownerDocument.createElement('create-post');
 					this.shadowRoot.appendChild(formReview);
+					break
+
+				case Screens.FAVORITOS:
+					const favoritos = this.ownerDocument.createElement('app-favoritos');
+					this.shadowRoot.appendChild(favoritos);
 					break
 				default:
 			}

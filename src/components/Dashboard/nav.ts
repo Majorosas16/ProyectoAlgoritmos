@@ -66,7 +66,7 @@ class Nav extends HTMLElement {
                 favoritesButton.setAttribute("textColor", "#5D3B94");
     
                 favoritesButton?.addEventListener('click', () => {
-                    dispatch(navigate(Screens.DASHBOARD));
+                    dispatch(navigate(Screens.FAVORITOS));
                 });
     
                 containerBtn.appendChild(favoritesButton)
