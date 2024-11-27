@@ -68,6 +68,7 @@ class Dashboard extends HTMLElement {
             const user = await getUser(appState.user); // referencia de la data de usuarios en Firebase
 
             const userId = appState.user;
+            
         if (userId) {
             const userData = await getUser(userId);
         }

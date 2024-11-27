@@ -12,3 +12,5 @@ export const setUserCredentials = (user: string) => {
 		payload: user,
 	};
 };
+
+//los post aqui - falta. subirlo al store

@@ -151,8 +151,8 @@ class CreatePost extends HTMLElement {
 
             const imgInput = this.shadowRoot?.querySelector('#photo') as HTMLInputElement;
         imgInput?.addEventListener('change', () => {
-            this.selectedFile = imgInput.files?.[0] || undefined; 
-        });
+            this.selectedFile = imgInput.files?.[0] || undefined;
+        });
        imgInput.required
 
             const review = this.shadowRoot?.querySelector("#review") as HTMLInputElement;
