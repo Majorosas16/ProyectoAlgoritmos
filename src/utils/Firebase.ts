@@ -182,7 +182,7 @@ export const getFile = async (id: string): Promise<string | null> => {
     } catch (error) {
         console.error(error);
         return null; // Devuelve null si ocurre un error
-    }
+		}
 };
 
 export const getFiles = async (id: string): Promise<string[]> => {
@@ -202,7 +202,7 @@ export const getFiles = async (id: string): Promise<string[]> => {
     } catch (error) {
         console.error(error);
         return []; // Si hay error, devolvemos un array vacío
-    }
+		}
 };
 
 

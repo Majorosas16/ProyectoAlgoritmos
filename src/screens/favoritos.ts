@@ -44,9 +44,10 @@ class Favoritos extends HTMLElement {
     async render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="../src/styles.css">
+                <link rel="stylesheet" href="../src/screens/favoritos.css">
                 <nav-component></nav-component>
                 <responsive-nav></responsive-nav>
+                <img id="favorito" src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/Group%20179.png?raw=true" alt="">
                 <section id="secCards">
                     <div class="underSec">
                     </div>
