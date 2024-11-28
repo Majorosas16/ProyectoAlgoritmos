@@ -21,7 +21,7 @@ import '../screens/dashboard';
 import { addObserver, appState } from '../store/store';
 import { Screens } from '../types/store';
 
-class Favoritos extends HTMLElement {
+class Perfil extends HTMLElement {
 
 	arrayReview: ReviewCard[] = [];
 
@@ -62,5 +62,5 @@ class Favoritos extends HTMLElement {
 }
 }
 
-customElements.define('app-favoritos', Favoritos);
-export default Favoritos;
+customElements.define('app-perfil', Perfil);
+export default Perfil;
