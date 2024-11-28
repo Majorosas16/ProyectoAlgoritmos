@@ -45,6 +45,10 @@ class AppContainer extends HTMLElement {
 					const favoritos = this.ownerDocument.createElement('app-favoritos');
 					this.shadowRoot.appendChild(favoritos);
 					break
+				case Screens.PROFILE:
+					const perfil = this.ownerDocument.createElement('app-perfil');
+						this.shadowRoot.appendChild(perfil);
+					break
 				default:
 			}
 			// console.log(appState);

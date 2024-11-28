@@ -1,0 +1,48 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+#favorito {
+  position: relative;
+  top: 3rem;
+  max-width: 13rem;
+  width: 100%;
+  margin-left: 45%;
+}
+
+#favorito2 {
+  display: none; 
+}
+
+#morada {
+  display: none; 
+}
+
+@media (max-width: 768px) {
+  #favorito {
+      display: none; 
+  }
+
+  #favorito2 {
+      display: block; 
+      position: relative;
+      top: 3rem;
+      max-width: 13rem;
+      width: 100%;
+      margin-left: 25%;
+  }
+  #morada {
+    display: block !important; 
+    background-color: #9b59b6; 
+    height: 2rem; 
+    width: 2rem;
+}
+}
