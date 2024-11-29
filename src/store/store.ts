@@ -29,6 +29,7 @@ onAuth();
 //El estado global, appState
 const initialState: AppState = {
 	screen: Screens.LOGIN,
+	posts: [],
 	user: '',
 };
 

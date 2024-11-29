@@ -104,8 +104,15 @@ class Register extends HTMLElement {
 			const passwordInput = this.shadowRoot.querySelector('.password') as HTMLInputElement;
 			const confirmPasswordInput = this.shadowRoot.querySelector('.confirm-password') as HTMLInputElement;
 			const registerButton = this.shadowRoot.querySelector('.register') as HTMLButtonElement;
+			const imgLogo = this.shadowRoot.querySelector('.img-logo') as HTMLButtonElement;
 
-			
+			if (imgLogo) {
+				imgLogo.addEventListener('click', () => {
+					console.log("Logo clicked");
+					dispatch(navigate(Screens.LOGIN)); 
+				});	
+			}
+
 			emailInput.addEventListener('change', this.changeEmail.bind(this));
 			nameInput.addEventListener('change', this.changeName.bind(this));
 			bioInput.addEventListener('change', this.changeBio.bind(this));
