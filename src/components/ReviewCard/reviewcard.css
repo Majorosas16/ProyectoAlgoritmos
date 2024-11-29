@@ -2,70 +2,150 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
-    background-color: #4C248A;
+    background-color: #4C248A; /* Fondo púrpura para el contenedor principal */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    
 }
 
+/* Contenedor principal de la tarjeta */
 .card-container {
     display: flex;
     flex-direction: column;
-    gap: 20%;
-    background-color: white;
+    gap: 10px;
+    background-color: #ffffff; /* Fondo blanco para mejorar el contraste */
+    color: #ffffff; /* Texto negro */
     border-radius: 15px;
-
-}
-
-.card {
-    background-color: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    width: 22rem;
-    text-align: center;
+    width: 320px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 15px;
     position: relative;
 }
 
-.card img {
-    width: 100%;
-    height: auto;
-}
-
-.info {
-    padding: 15px;
-    gap: px;
+/* Perfil de usuario */
+.card-container div:first-child {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-#iconCard {
+.card-container div:first-child img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4C248A;
+}
+
+.card-container div:first-child p {
+    margin: 0;
+    font-size: 14px;
+    color: #4C248A; /* Nombre de usuario en color distintivo */
+}
+
+.card-container div:first-child p:nth-child(2) {
+    font-weight: bold;
+}
+
+/* Imagen de portada */
+.card-container div:nth-child(2) img {
+    width: 100%;
+    border-radius: 10px;
+    height: 180px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.card-container div:nth-child(2) h1 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #4C248A; /* Título destacado */
+}
+
+.card-container div:nth-child(2) p {
+    font-size: 14px;
+    color: #4C248A; /* "See full review" en color destacado */
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Iconos y texto */
+.iconsAndText {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #4C248A; /* Ajustar color de los textos secundarios */
+}
+
+.iconsAndText div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.iconsAndText svg {
+    fill: #4C248A;
+}
+
+.iconsAndText p {
+    font-weight: bold;
+}
+
+/* Icono de "me gusta" */
+#likeIcon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
     cursor: pointer;
 }
 
-.heart-icon {
-    margin-top: 2%;
-    width: 32px;
-    height: 32px;
+#likeIcon svg {
+    width: 20px;
+    height: 20px;
+    fill: #4C248A; /* Color destacado */
 }
 
-
-.info h1 {
-    width: auto;
-    font-size: 120%;
-    margin-bottom: 5px;
+#likeIcon p {
+    font-size: 14px;
     color: #4C248A;
 }
 
-.info p {
-    width: 70%;
-    font-size: 16px;
-    color: gray;
+/* Icono de corazón */
+#iconCard {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
 }
 
+#iconCard svg {
+    width: 24px;
+    height: 24px;
+    fill: gray; /* Color inicial del corazón */
+    transition: fill 0.3s ease;
+}
+
+/* Colores del corazón al activarlo */
+.heart-icon.active {
+    fill: #4C248A; /* Color púrpura al activarse */
+}
+
+/* Rating y fecha */
+.iconsAndText .dateadded {
+    color: #4C248A; /* La fecha también en un color que resalte */
+    font-size: 12px;
+}
+
+/* Para los íconos generales */
+.iconsAndText svg {
+    width: 16px;
+    height: 16px;
+}

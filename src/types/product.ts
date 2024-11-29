@@ -8,7 +8,7 @@ export interface Product {
     review: string
 }
 
-export enum Attribute {
+export enum Attribute2 {
     // "imageprofile" = "imageprofile",
     "user" = "user",
     "bio" = "bio",

@@ -1,7 +1,7 @@
 import { Product } from '../../types/product';
 import '../../components/ReviewCard/reviewcard'
 import ReviewCard from '../../components/ReviewCard/reviewcard'
-import { Attribute } from '../../types/product';
+import { Attribute2 } from '../../types/product';
 import { credentials } from '../../types/product';
 import { review } from '../../types/product';
 import { getUser } from '../../utils/Firebase';
