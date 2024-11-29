@@ -10,7 +10,7 @@
     height: 100vh;
   }
   
-  #favorito {
+  #follower {
     position: relative;
     top: 3rem;
     max-width: 13rem;
@@ -18,7 +18,7 @@
     margin-left: 45%;
   }
   
-  #favorito2 {
+  #follower2 {
     display: none; 
   }
   
@@ -27,11 +27,11 @@
   }
   
   @media (max-width: 768px) {
-    #favorito {
+    #follower {
         display: none; 
     }
   
-    #favorito2 {
+    #follower2 {
         display: block; 
         position: relative;
         top: 3rem;
