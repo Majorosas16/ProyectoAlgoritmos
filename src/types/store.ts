@@ -2,8 +2,19 @@ export type Observer = { render: () => void } & HTMLElement;
 
 export type AppState = {
 	screen: string;
-	user: ''
+	user: '',
+	posts: post[],
 };
+
+type post = {
+	user: string,
+	bio: string,
+	imagecover: string,
+	titlereview: string,
+	rating: string,
+	name: string,
+	review: string,
+}
 
 export enum Screens {
 	'LOGIN' = 'LOGIN',

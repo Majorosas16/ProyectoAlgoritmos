@@ -13,7 +13,6 @@ const product: Product = {
     rating: '',
     name :'',
     review: ''
-
 }
 
 export enum Attribute {

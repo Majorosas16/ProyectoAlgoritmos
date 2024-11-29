@@ -37,6 +37,8 @@ class AppContainer extends HTMLElement {
 				case Screens.DASHBOARD:
 					const dashboard = this.ownerDocument.createElement('app-dashboard');
 					this.shadowRoot.appendChild(dashboard);
+					console.log(appState.posts);
+					
 					break;
 
 				case Screens.FORMREVIEW:
