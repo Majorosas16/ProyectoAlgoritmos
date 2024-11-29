@@ -5,7 +5,7 @@ import { navigate } from "../../store/actions";
 import { Screens } from "../../types/store";
 import { Product } from "../../types/product";
 
-const product: Product = { 
+const product: Product = {
     user: '',
     bio: '',
     imagecover: '',
@@ -45,7 +45,7 @@ class CreatePost extends HTMLElement {
     }
 
     async connectedCallback() {
-        const userId = appState.user; 
+        const userId = appState.user;
         const userData = await getUser(userId);
         if (userData) {
             this.name = userData.name;
@@ -61,48 +61,48 @@ class CreatePost extends HTMLElement {
 
     changeName(e: any) {
         //capturar el valor del input
-        product.name = e.target.value;   
+        product.name = e.target.value;
     }
 
     changeRating(e: any) {
      //capturar el valor del input
-     product.rating = e.target.value;      
+     product.rating = e.target.value;
     }
 
     changeReview(e: any) {
     //capturar el valor del input
-     product.review = e.target.value; 
+     product.review = e.target.value;
     }
-    
+
     async submitForm() {
         const img = this.shadowRoot?.querySelector('#photo') as HTMLInputElement;
-        const file = img?.files?.[0]; 
+        const file = img?.files?.[0];
         console.log(file);
         await addProduct(product);
         alert('Post creado');
-        
+
     //     if (file) {
     //         console.log('que Pasa?');
-    //         const uniqueFileName = await uploadFile(file, appState.user); 
-    //         const imageUrl: string | null = await getFile(String(uniqueFileName)); 
-            
+    //         const uniqueFileName = await uploadFile(file, appState.user);
+    //         const imageUrl: string | null = await getFile(String(uniqueFileName));
+
     //         if (imageUrl) {
-    //             product.imagecover = imageUrl; 
+    //             product.imagecover = imageUrl;
     //             dispatch(navigate(Screens.DASHBOARD))
     //         } else {
     //             console.error("No se pudo obtener la URL de la imagen.");
     //             alert("Error al obtener la URL de la imagen. Por favor intenta de nuevo.");
-    //             return; 
+    //             return;
     //         }
-    
-      
+
+
     // }else
     {
-    
+
 }
     }
 
-   render() {
+   async render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../src/screens/CreatePost/createPost.css">
@@ -110,7 +110,7 @@ class CreatePost extends HTMLElement {
             <responsive-nav></responsive-nav>
             <section class="container">
                     <h1 class="titulo">Create a Review</h1>
-                    
+
                     <div id="Form">
 
                         <div class="organize">
@@ -131,16 +131,16 @@ class CreatePost extends HTMLElement {
                             </div>
 
                         </div>
-                        
+
                         <button id="submitButton">Publish</button>
 
                     </div>
-                    
-                    
+
+
             </section>
-               
+
                 `;
-            
+
             //Eventos a cada input y botón, llamo la función que cambia el estado
             const buttonSubmit = this.shadowRoot?.querySelector("#submitButton")as HTMLButtonElement;
             buttonSubmit.addEventListener('click', this.submitForm.bind(this));
@@ -160,21 +160,20 @@ class CreatePost extends HTMLElement {
             const imgInput = this.shadowRoot?.querySelector('#photo') as HTMLInputElement;
             imgInput?.addEventListener('change', () => {
                 const file = imgInput.files?.[0];
-                if (file) uploadFile(file, appState.user);
-            // this.selectedFile = imgInput.files?.[0] || undefined;
-        });
+                if (file) uploadFile(file, appState.user);});
        imgInput.required
+    //    this.shadowRoot?.appendChild(imgInput);
 
-    //    iImg.addEventListener('change', () => {
-    //     const file = iImg.files?.[0];
-    //     if (file) uploadFile(file, appState.user);
-    //    });
-            
             const review = this.shadowRoot?.querySelector("#review") as HTMLInputElement;
             review.addEventListener('change', this.changeReview);
             review.required
-
         }
+
+        const urlImg = await getFile(appState.user);
+        const postImg = this.ownerDocument.createElement('img');
+        postImg.src = String(urlImg);
+        this.shadowRoot?.appendChild(postImg);
+
 
     }
 }

@@ -7,7 +7,7 @@ import "../../components/navResponsive/navR"
 import '../../screens/Register/registro';
 import '../Dashboard/dashboard';
 import { addObserver, appState } from '../../store/store';
-import { Screens } from '../../types/store';
+import { uploadFileProfile, getFilePerfil, getFile } from '../../utils/Firebase';
 
 class PerfilEdit extends HTMLElement {
 
@@ -24,8 +24,6 @@ class PerfilEdit extends HTMLElement {
 
     // changeImage(event: any) {
     //     console.log(event);
-        
-    //     const file = 
     // } 
 
     logout() {
@@ -43,11 +41,18 @@ class PerfilEdit extends HTMLElement {
                 
             `;}
 
-            // const pImage = this.ownerDocument.querySelector('input');
-            // pImage.type = 'file';
-            // pImage?.addEventListener('change', this.changeImage);
-            // this.shadowRoot?.appendChild(pImage);
+            const pImage = this.ownerDocument.createElement('input');
+            pImage.type = 'file';
+            pImage?.addEventListener('change', () => {
+                const file = pImage.files?.[0];
+                if (file) uploadFileProfile(file, appState.user)
+            } );
+            this.shadowRoot?.appendChild(pImage);
 
+            const urlImg = await getFilePerfil(appState.user);
+            const profileImg = this.ownerDocument.createElement('img');
+            profileImg.src = String(urlImg);
+            this.shadowRoot?.appendChild(profileImg);
             }
 }
 
