@@ -69,10 +69,9 @@ class Nav extends HTMLElement {
                     dispatch(navigate(Screens.FAVORITOS));
                 });
 
-                const profileUser = this.ownerDocument.createElement("btn-component") as Button;
-
-                profileUser?.addEventListener('click', () => {
-                    dispatch(navigate(Screens.PROFILE));
+                profile.addEventListener('click', () => {
+                    console.log("Profile clicked");
+                    dispatch(navigate(Screens.PROFILE)); 
                 });
 
                 containerBtn.appendChild(favoritesButton)
