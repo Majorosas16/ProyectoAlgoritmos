@@ -29,7 +29,7 @@ class PerfilEdit extends HTMLElement {
     async render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="../src/screens/ProfileEdit/profileEdit.css">
+<link rel="stylesheet" href="../src/screens/ProfileEdit/profileEdit.css">
                 <nav-component></nav-component>
                 <section class="contenedor">
                 <div class="profile-container">
@@ -53,7 +53,7 @@ class PerfilEdit extends HTMLElement {
                         <textarea id="bio" class="bio-input"></textarea>
 
                         <label for="password">Change Password</label>
-                        <input id="password" class="password-input" type="password" placeholder="********" />
+                        <input id="password" class="password-input" type="password" placeholder="****" />
 
                         <button class="save-btn">Save</button>
                     </div>
@@ -78,48 +78,48 @@ class PerfilEdit extends HTMLElement {
         const urlImg = await getFilePerfil(appState.user);
         if (urlImg) profileImg.src = urlImg;
 
-        // Cambiar imagen
-        changeImageBtn.addEventListener('click', () => fileInput.click());
+// Cambiar imagen
+changeImageBtn.addEventListener('click', () => fileInput.click());
 
-        fileInput.addEventListener('change', async () => {
-            const file = fileInput.files?.[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    if (event.target?.result) {
-                        profileImg.src = event.target.result as string;
-                    }
-                };
-                reader.readAsDataURL(file);
-
-                try {
-                    await uploadFileProfile(file, appState.user);
-                    alert('Imagen de perfil actualizada exitosamente.');
-                } catch (error) {
-                    console.error('Error al subir la imagen:', error);
-                    alert('Hubo un problema al guardar la imagen. Intenta nuevamente.');
-                }
+fileInput.addEventListener('change', async () => {
+    const file = fileInput.files?.[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            if (event.target?.result) {
+                profileImg.src = event.target.result as string;
             }
-        });
+        };
+        reader.readAsDataURL(file);
 
-        saveBtn.addEventListener('click', async () => {
-            const updatedUser = {
-                name: nameInput.value,
-                username: usernameInput.value,
-                email: emailInput.value,
-                bio: bioInput.value,
-                password: passwordInput.value, 
-            };
-
-            try {
-                console.log('Datos actualizados:', updatedUser);
-                alert('Datos guardados exitosamente.');
-            } catch (error) {
-                console.error('Error al guardar los datos:', error);
-                alert('Hubo un problema al guardar los cambios. Intenta nuevamente.');
-            }
-        });
+        try {
+            await uploadFileProfile(file, appState.user);
+            alert('Imagen de perfil actualizada exitosamente.');
+        } catch (error) {
+            console.error('Error al subir la imagen:', error);
+            alert('Hubo un problema al guardar la imagen. Intenta nuevamente.');
+        }
     }
+});
+
+saveBtn.addEventListener('click', async () => {
+    const updatedUser = {
+        name: nameInput.value,
+        username: usernameInput.value,
+        email: emailInput.value,
+        bio: bioInput.value,
+        password: passwordInput.value, 
+    };
+
+    try {
+        console.log('Datos actualizados:', updatedUser);
+        alert('Datos guardados exitosamente.');
+    } catch (error) {
+        console.error('Error al guardar los datos:', error);
+        alert('Hubo un problema al guardar los cambios. Intenta nuevamente.');
+    }
+});
+}
 }
 
 customElements.define('app-profiledit', PerfilEdit);

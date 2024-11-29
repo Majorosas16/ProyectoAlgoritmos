@@ -210,12 +210,6 @@ class CreatePost extends HTMLElement {
         const secCards = this.shadowRoot?.querySelector("#secCards");
         const urlImg = await getFile(appState.user);
         const postImg = this.ownerDocument.createElement('img');
-<<<<<<< HEAD
-        postImg.src = String(urlImg);
-        this.shadowRoot?.appendChild(postImg); //Pinta la imagen
-
-
-=======
  
         const reviewCard = this.ownerDocument.createElement("review-component") as ReviewCard;
         reviewCard.setAttribute(Attribute2.user, name);
@@ -246,7 +240,6 @@ class CreatePost extends HTMLElement {
     //        secCards.appendChild(document.createTextNode(this.review ?? ""));   
     //        this.shadowRoot?.appendChild(secCards);
     //    }
->>>>>>> ec7867494be97f1beb5019b1a3925d3c96af0380
     }
 }
 
