@@ -44,7 +44,7 @@ class Favoritos extends HTMLElement {
     async render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="../src/screens/favoritos.css">
+                <link rel="stylesheet" href="../src/screens/Favorites/favoritos.css">
                 <nav-component></nav-component>
                 <div id="morada" class="header-morada"></div>
                 <responsive-nav></responsive-nav>
