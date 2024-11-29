@@ -32,12 +32,12 @@ class Followers extends HTMLElement {
     async render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-               <link rel="stylesheet" href="../src/screens/favoritos.css">
+               <link rel="stylesheet" href="../src/screens/followers.css">
                 <nav-component></nav-component>
                 <div id="morada" class="header-morada"></div>
                 <responsive-nav></responsive-nav>
-                <img id="favorito" src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/Group%20179.png?raw=true" alt="">
-                <img id="favorito2" src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/NewBranch/src/Recursos/Group%20180.png?raw=true" alt="">
+                <img id="follower" src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/Group%20181.png?raw=true" alt="">
+                <img id="follower2" src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/Group%20182.png?raw=true" alt="">
                 <section id="secCards">
                     <div class="underSec">
                     </div>

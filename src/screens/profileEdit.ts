@@ -34,14 +34,34 @@ class PerfilEdit extends HTMLElement {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="../src/screens/favoritos.css">
                 <nav-component></nav-component>
-                <div id="morada" class="header-morada"></div>
-                <responsive-nav></responsive-nav>
-                <img id="favorito" src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/main/src/Recursos/Group%20179.png?raw=true" alt="">
-                <img id="favorito2" src="https://github.com/Majorosas16/ProyectoAlgoritmos/blob/NewBranch/src/Recursos/Group%20180.png?raw=true" alt="">
-                <section id="secCards">
-                    <div class="underSec">
+
+                <div class="img-perfil"></div>
+                <div class="inputs">
+                    <div class="inputs-name">
+                    <a>Name</a>
+                    <input type="text" placeholder="Name" class="name">
                     </div>
-                </section>
+
+                    <div class="inputs-username">
+                    <a>Username</a>
+                    <input type="text" placeholder="Username" class="username">
+                    </div>
+
+                    <div class="inputs-email">
+                    <a>Email</a>
+                    <input type="email" placeholder="Email" class="email">
+                    </div>
+
+                    <div class="inputs-bio">
+                    <a>Change biography</a>
+                    <input type="text" placeholder="Biography: “Superhero Fan”" class="bio">
+                    </div>
+
+                    <div class="inputs-password">
+                    <a>Change password</a>
+                    <input type="password" placeholder="Password" class="password">
+                    </div>
+				</div>
                 <button>Cerrar perfil</button>
             `;}
         
