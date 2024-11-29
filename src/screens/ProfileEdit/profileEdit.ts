@@ -37,6 +37,9 @@ class PerfilEdit extends HTMLElement {
                 <body>
                 <section class="contenedor">
                 <div class="img-perfil"></div>
+                <div class="input-img">
+                <input type="file" class="name">
+                </div>
                 <div class="inputs">
                     <div class="inputs-name">
                     <a>Name</a>
@@ -70,6 +73,8 @@ class PerfilEdit extends HTMLElement {
                 </body>
                 
             `;}
+
+
         
             }
 }
