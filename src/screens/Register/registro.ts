@@ -55,7 +55,7 @@ class Register extends HTMLElement {
 	async render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-				<link rel="stylesheet" href="../src/screens/registroStyle.css">
+				<link rel="stylesheet" href="../src/screens/Register/registroStyle.css">
 				<section class="container">
 					<div class="form-section">
 						<div class="responsive-image-container">

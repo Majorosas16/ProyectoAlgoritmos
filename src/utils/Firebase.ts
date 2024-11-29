@@ -158,23 +158,21 @@ export const uploadFile = async (file: File, id: string) => {
     const { storage } = await getFirebaseInstance();
     const { ref, uploadBytes } = await import('firebase/storage');
 
-    // Genera un nombre único para la imagen usando un timestamp
-    const uniqueFileName = `${id}_${Date.now()}_${file.name}`;
-    const storageRef = ref(storage, 'imagesCover/' + uniqueFileName);
+    const storageRef = ref(storage, 'imagesProfile/' + id);
+	uploadBytes(storageRef, file).then((snapshot) => {
+		console.log('File uploaded');
+	});
 
     await uploadBytes(storageRef, file).then((snapshot) => {
         console.log('File uploaded');
     });
-
-    // Devuelve el nombre único del archivo subido, si lo necesitas para futuras referencias
-    return uniqueFileName; // Opcional, si necesitas el nombre para obtener la URL
 };
 
 export const getFile = async (id: string): Promise<string | null> => {
     const { storage } = await getFirebaseInstance();
     const { ref, getDownloadURL } = await import('firebase/storage');
 
-    const storageRef = ref(storage, 'imagesCover/' + id);
+    const storageRef = ref(storage, 'imagesProfile/' + id);
     
     try {
         const url = await getDownloadURL(storageRef);
@@ -189,7 +187,7 @@ export const getFiles = async (id: string): Promise<string[]> => {
     const { storage } = await getFirebaseInstance();
     const { ref, listAll, getDownloadURL } = await import('firebase/storage');
 
-    const storageRef = ref(storage, 'imagesCover/' + id);
+    const storageRef = ref(storage, 'imagesProfile/' + id);
     
     try {
         // Obtener una lista de archivos en el directorio
