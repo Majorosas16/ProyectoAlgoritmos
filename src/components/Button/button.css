@@ -5,6 +5,7 @@ button {
     border-bottom: 4px solid #000000; 
     border-right: 4px solid #000000; 
     border-radius: 10px;
+    width: auto;
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;

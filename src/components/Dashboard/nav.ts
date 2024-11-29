@@ -83,7 +83,7 @@ class Nav extends HTMLElement {
 
                 const LogoutButton = this.ownerDocument.createElement("btn-component") as Button;
                 LogoutButton.setAttribute("color", "white");
-                LogoutButton.setAttribute("label", "Log Out");
+                LogoutButton.setAttribute("label", "LogOut");
                 LogoutButton.setAttribute("textColor", "#5D3B94");
 
                 LogoutButton.addEventListener('click', this.logout);

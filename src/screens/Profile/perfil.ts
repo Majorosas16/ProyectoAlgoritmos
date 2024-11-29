@@ -62,7 +62,6 @@ Your follows
                     <div class="underSec">
                     </div>
                 </section>
-                <button>Cerrar perfil</button>
             `;}
            
 
