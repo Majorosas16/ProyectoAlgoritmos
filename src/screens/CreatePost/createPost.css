@@ -9,7 +9,7 @@
 .container {
     background-color: #946CC4;
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
     padding: 2rem;
     display: flex;
     flex-direction: column;

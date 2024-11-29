@@ -4,6 +4,12 @@ import { addObserver, appState, dispatch } from "../../store/store";
 import { navigate } from "../../store/actions";
 import { Screens } from "../../types/store";
 import { Product } from "../../types/product";
+import '../../components/ReviewCard/reviewcard'
+import ReviewCard from '../../components/ReviewCard/reviewcard';
+import { Attribute2 } from '../../types/product';
+import { getProducts } from '../../utils/Firebase';
+
+
 
 const product: Product = {
     user: '',
@@ -27,6 +33,9 @@ export enum Attribute {
 }
 
 class CreatePost extends HTMLElement {
+
+    arrayReview: ReviewCard[] = [];
+
     // imageprofile?: string;
     user?: string;
     bio?: string;
@@ -106,10 +115,10 @@ class CreatePost extends HTMLElement {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../src/screens/CreatePost/createPost.css">
-            <nav-component></nav-component>
-            <responsive-nav></responsive-nav>
+            <link rel="stylesheet" href="../src/styles.css">
+
             <section class="container">
-                    <h1 class="titulo">Create a Review</h1>
+                    <h1 class="titulo">Everything starts with a review</h1>
 
                     <div id="Form">
 
@@ -139,6 +148,10 @@ class CreatePost extends HTMLElement {
 
             </section>
 
+                    <section id="secCards">
+                        <div class="underSec"></div>
+                    </section>
+
                 `;
 
             //Eventos a cada input y botón, llamo la función que cambia el estado
@@ -161,20 +174,79 @@ class CreatePost extends HTMLElement {
             imgInput?.addEventListener('change', () => {
                 const file = imgInput.files?.[0];
                 if (file) uploadFile(file, appState.user);});
-       imgInput.required
-    //    this.shadowRoot?.appendChild(imgInput);
+            imgInput.required
 
             const review = this.shadowRoot?.querySelector("#review") as HTMLInputElement;
             review.addEventListener('change', this.changeReview);
             review.required
         }
+       //
 
+       const container = document.createElement('div');
+       container.classList.add('containerCards');
+
+       const reviews = await getProducts();  // referencia de la data de reviews en Firebase
+       const user = await getUser(appState.user); // referencia de la data de usuarios en Firebase
+
+       const userId = appState.user;
+
+       if (userId) {
+        const userData = await getUser(userId);
+    }
+    
+       for (const review of reviews || []) {
+        let bio = '';
+        let name = '';
+
+        console.log(review);
+        
+        if (review.userUid) {
+            const userDataPost = await getUser(review.userUid);
+            
+            name = userDataPost?.name || '';
+            bio = userDataPost?.bio || '';
+           }
+           
+        const secCards = this.shadowRoot?.querySelector("#secCards");
         const urlImg = await getFile(appState.user);
         const postImg = this.ownerDocument.createElement('img');
+<<<<<<< HEAD
         postImg.src = String(urlImg);
         this.shadowRoot?.appendChild(postImg); //Pinta la imagen
 
 
+=======
+ 
+        const reviewCard = this.ownerDocument.createElement("review-component") as ReviewCard;
+        reviewCard.setAttribute(Attribute2.user, name);
+        reviewCard.setAttribute(Attribute2.bio, bio);
+        reviewCard.setAttribute(Attribute2.imagecover, postImg.src = String(urlImg));
+        reviewCard.setAttribute(Attribute2.titlereview, review.name);
+           reviewCard.setAttribute(Attribute2.rating, String(review.rating));
+           reviewCard.setAttribute(Attribute2.dateadded, review.dateadded);
+        this.arrayReview.push(reviewCard); 
+ 
+        
+        if (secCards) {
+         this.arrayReview.forEach((element) => {
+            container.appendChild(element);
+            secCards?.appendChild(container);
+         });
+     } else {
+         console.error('elements not found');
+        }
+       }
+       
+       
+    //    if (secCards) {
+    //        secCards.appendChild(document.createTextNode(this.title));
+    //        secCards.appendChild(document.createTextNode(this.name ?? ""));        
+    //        secCards.appendChild(document.createTextNode(String(this.rating ?? '')));
+    //        secCards.appendChild(postImg);   
+    //        secCards.appendChild(document.createTextNode(this.review ?? ""));   
+    //        this.shadowRoot?.appendChild(secCards);
+    //    }
+>>>>>>> ec7867494be97f1beb5019b1a3925d3c96af0380
     }
 }
 
