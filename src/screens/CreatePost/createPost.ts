@@ -1,9 +1,9 @@
-import { addProduct, uploadFile, getFile, getUser } from "../utils/Firebase";
-import { review } from "../types/product";
-import { addObserver, appState, dispatch } from "../store/store";
-import { navigate } from '../store/actions';
-import { Screens } from '../types/store';
-import { Product } from "../types/product";
+import { addProduct, uploadFile, getFile, getUser } from "../../utils/Firebase";
+import { review } from "../../types/product";
+import { addObserver, appState, dispatch } from "../../store/store";
+import { navigate } from "../../store/actions";
+import { Screens } from "../../types/store";
+import { Product } from "../../types/product";
 
 const product: Product = { 
     user: '',

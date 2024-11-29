@@ -3,7 +3,7 @@ import { Attribute } from '../../types/product';
 import { getProducts } from '../../utils/Firebase';
 import { getUser } from '../../utils/Firebase';
 import { getFile } from '../../utils/Firebase';
-import { appState } from '../../store/store';
+import { AppState } from '../../types/store';
 
 class ReviewCard extends HTMLElement {
 

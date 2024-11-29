@@ -1,7 +1,7 @@
-import { dispatch } from '../store/store';
-import { navigate } from '../store/actions';
-import { Screens } from '../types/store';
-import { loginUser } from '../utils/Firebase';
+import { dispatch } from '../../store/store';
+import { navigate } from '../../store/actions';
+import { Screens } from '../../types/store';
+import { loginUser } from '../../utils/Firebase';
 
 const credentials = {
 	email: '',
