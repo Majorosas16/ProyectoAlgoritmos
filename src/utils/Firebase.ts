@@ -158,7 +158,7 @@ export const uploadFile = async (file: File, id: string) => {
     const { storage } = await getFirebaseInstance();
     const { ref, uploadBytes } = await import('firebase/storage');
 
-    const storageRef = ref(storage, 'imagesProfile/' + id);
+    const storageRef = ref(storage, 'imagesCover/' + id);
 	uploadBytes(storageRef, file).then((snapshot) => {
 		console.log('File uploaded');
 	});
@@ -168,26 +168,41 @@ export const uploadFile = async (file: File, id: string) => {
     });
 };
 
-export const getFile = async (id: string): Promise<string | null> => {
-    const { storage } = await getFirebaseInstance();
-    const { ref, getDownloadURL } = await import('firebase/storage');
+// export const getFile = async (id: string): Promise<string | null> => {
+//     const { storage } = await getFirebaseInstance();
+//     const { ref, getDownloadURL } = await import('firebase/storage');
 
-    const storageRef = ref(storage, 'imagesProfile/' + id);
+//     const storageRef = ref(storage, 'imagesCover/' + id);
     
-    try {
-        const url = await getDownloadURL(storageRef);
-        return url; // Devuelve la URL si tiene éxito
-    } catch (error) {
-        console.error(error);
-        return null; // Devuelve null si ocurre un error
-		}
+//     try {
+//         const url = await getDownloadURL(storageRef);
+//         return url; // Devuelve la URL si tiene éxito
+//     } catch (error) {
+//         console.error(error);
+//         return null; // Devuelve null si ocurre un error
+// 		}
+// };
+
+
+export const getFile = async (id: string) => {
+	const { storage } = await getFirebaseInstance();
+    const { ref, getDownloadURL } = await import('firebase/storage');
+	const storageRef = ref(storage, 'imagesCover/' + id);
+	const urlImg = await getDownloadURL(ref(storageRef))
+		.then((url) => {
+			return url;
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+	return urlImg;
 };
 
 export const getFiles = async (id: string): Promise<string[]> => {
     const { storage } = await getFirebaseInstance();
     const { ref, listAll, getDownloadURL } = await import('firebase/storage');
 
-    const storageRef = ref(storage, 'imagesProfile/' + id);
+    const storageRef = ref(storage, 'imagesCover/' + id);
     
     try {
         // Obtener una lista de archivos en el directorio

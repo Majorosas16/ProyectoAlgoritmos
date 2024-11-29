@@ -22,13 +22,12 @@ export enum Attribute {
     "imagecover" = "imagecover",
     "titlereview" = "titlereview",
     "rating" = "rating",
-    "dateadded" = "dateadded",
     "name" ="name",
     "review"="review"
 }
 
 class CreatePost extends HTMLElement {
-    imageprofile?: string;
+    // imageprofile?: string;
     user?: string;
     bio?: string;
     imagecover?: string;
@@ -79,29 +78,26 @@ class CreatePost extends HTMLElement {
         const img = this.shadowRoot?.querySelector('#photo') as HTMLInputElement;
         const file = img?.files?.[0]; 
         console.log(file);
-        
-        
-        if (file) {
-            console.log('que Pasa?');
-            const uniqueFileName = await uploadFile(file, appState.user); 
-            const imageUrl: string | null = await getFile(String(uniqueFileName)); 
-            
-            if (imageUrl) {
-                product.imagecover = imageUrl; 
-                dispatch(navigate(Screens.DASHBOARD))
-            } else {
-                console.error("No se pudo obtener la URL de la imagen.");
-                alert("Error al obtener la URL de la imagen. Por favor intenta de nuevo.");
-                return; 
-            }
-    
         await addProduct(product);
-    
         alert('Post creado');
         
+    //     if (file) {
+    //         console.log('que Pasa?');
+    //         const uniqueFileName = await uploadFile(file, appState.user); 
+    //         const imageUrl: string | null = await getFile(String(uniqueFileName)); 
+            
+    //         if (imageUrl) {
+    //             product.imagecover = imageUrl; 
+    //             dispatch(navigate(Screens.DASHBOARD))
+    //         } else {
+    //             console.error("No se pudo obtener la URL de la imagen.");
+    //             alert("Error al obtener la URL de la imagen. Por favor intenta de nuevo.");
+    //             return; 
+    //         }
+    
       
-    }else{
-    console.log('ves que no va?');
+    // }else
+    {
     
 }
     }
@@ -162,11 +158,18 @@ class CreatePost extends HTMLElement {
             rating.required
 
             const imgInput = this.shadowRoot?.querySelector('#photo') as HTMLInputElement;
-        imgInput?.addEventListener('change', () => {
-            this.selectedFile = imgInput.files?.[0] || undefined;
+            imgInput?.addEventListener('change', () => {
+                const file = imgInput.files?.[0];
+                if (file) uploadFile(file, appState.user);
+            // this.selectedFile = imgInput.files?.[0] || undefined;
         });
        imgInput.required
 
+    //    iImg.addEventListener('change', () => {
+    //     const file = iImg.files?.[0];
+    //     if (file) uploadFile(file, appState.user);
+    //    });
+            
             const review = this.shadowRoot?.querySelector("#review") as HTMLInputElement;
             review.addEventListener('change', this.changeReview);
             review.required
