@@ -172,7 +172,7 @@ class CreatePost extends HTMLElement {
         const urlImg = await getFile(appState.user);
         const postImg = this.ownerDocument.createElement('img');
         postImg.src = String(urlImg);
-        this.shadowRoot?.appendChild(postImg);
+        this.shadowRoot?.appendChild(postImg); //Pinta la imagen
 
 
     }
