@@ -1,13 +1,13 @@
-import '../src/screens/registro'
-import '../src/screens/dashboard';
-import '../src/screens/login';
-import '../src/screens/createPost';
-import '../src/screens/favoritos';
-import '../src/screens/perfil';
-import '../src/screens/profileEdit';
-import '../src/screens/followers';
-import { addObserver, appState } from '../src/store/store';
-import { Screens } from '../src/types/store';
+import '../src/screens/Register/registro'
+import '../src/screens/Dashboard/dashboard';
+import '../src/screens/Login/login';
+import '../src/screens/CreatePost/createPost';
+import '../src/screens/Favorites/favoritos';
+import '../src/screens/Profile/perfil';
+import '../src/screens/ProfileEdit/profileEdit';
+import '../src/screens/Followers/followers';
+import { addObserver, appState } from './store/store';
+import { Screens } from './types/store';
 
 class AppContainer extends HTMLElement {
 	constructor() {

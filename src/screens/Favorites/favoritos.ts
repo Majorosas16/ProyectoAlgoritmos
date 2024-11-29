@@ -1,25 +1,25 @@
-import { Product } from '../types/product';
-import '../components/ReviewCard/reviewcard'
-import ReviewCard from '../components/ReviewCard/reviewcard'
-import { Attribute } from '../types/product';
-import { credentials } from '../types/product';
-import { review } from '../types/product';
-import { getUser } from '../utils/Firebase';
-import { getFile } from '../utils/Firebase';
-import { getProducts } from '../utils/Firebase';
-import { AppState } from '../types/store';
+import { Product } from '../../types/product';
+import '../../components/ReviewCard/reviewcard'
+import ReviewCard from '../../components/ReviewCard/reviewcard'
+import { Attribute } from '../../types/product';
+import { credentials } from '../../types/product';
+import { review } from '../../types/product';
+import { getUser } from '../../utils/Firebase';
+import { getFile } from '../../utils/Firebase';
+import { getProducts } from '../../utils/Firebase';
+import { AppState } from '../../types/store';
 
 
-import * as components from "../components/indexPadre";
-import "../components/Dashboard/nav"
-import "../components/navResponsive/navR"
-import "../components/Carrusel/carrusel"
+import * as components from "../../components/indexPadre";
+import "../../components/Dashboard/nav"
+import "../../components/navResponsive/navR"
+import "../../components/Carrusel/carrusel"
 
 
-import '../screens/registro';
-import '../screens/dashboard';
-import { addObserver, appState } from '../store/store';
-import { Screens } from '../types/store';
+import '../Register/registro';
+import '../Dashboard/dashboard';
+import { addObserver, appState } from '../../store/store';
+import { Screens } from '../../types/store';
 
 class Favoritos extends HTMLElement {
 

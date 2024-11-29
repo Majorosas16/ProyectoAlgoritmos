@@ -1,13 +1,13 @@
-import '../components/ReviewCard/reviewcard'
-import ReviewCard from '../components/ReviewCard/reviewcard'
-import { dispatch } from "../store/store";
-import { navigate } from "../store/actions"
-import "../components/Dashboard/nav"
-import "../components/navResponsive/navR"
-import '../screens/registro';
-import '../screens/dashboard';
-import { addObserver, appState } from '../store/store';
-import { Screens } from '../types/store';
+import '../../components/ReviewCard/reviewcard'
+import ReviewCard from '../../components/ReviewCard/reviewcard'
+import { dispatch } from "../../store/store";
+import { navigate } from "../../store/actions"
+import "../../components/Dashboard/nav"
+import "../../components/navResponsive/navR"
+import '../Register/registro';
+import '../Dashboard/dashboard';
+import { addObserver, appState } from '../../store/store';
+import { Screens } from '../../types/store';
 
 class Followers extends HTMLElement {
 

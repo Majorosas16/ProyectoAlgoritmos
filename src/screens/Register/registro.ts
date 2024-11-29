@@ -1,8 +1,8 @@
-import { dispatch } from '../store/store';
-import { navigate } from '../store/actions';
-import { Screens } from '../types/store';
-import { registerUser } from '../utils/Firebase';
-import { credentials } from '../types/product';
+import { dispatch } from '../../store/store';
+import { navigate } from '../../store/actions';
+import { Screens } from '../../types/store';
+import { registerUser } from '../../utils/Firebase';
+import { credentials } from '../../types/product';
 
 class Register extends HTMLElement {
 	constructor() {
