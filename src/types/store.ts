@@ -11,7 +11,9 @@ export enum Screens {
 	'REGISTER' = 'REGISTER',
 	'FORMREVIEW' = 'FORMREVIEW',
 	'FAVORITOS' = 'FAVORITOS',
-	'PROFILE' = 'PROFILE'
+	'PROFILE' = 'PROFILE',
+	'FOLLOWS' = 'FOLLOWS',
+	'PROFILEEDIT' = 'PROFILEEDIT'
 }
 
 export enum Actions {

@@ -3,6 +3,9 @@ import '../src/screens/dashboard';
 import '../src/screens/login';
 import '../src/screens/createPost';
 import '../src/screens/favoritos';
+import '../src/screens/perfil';
+import '../src/screens/profileEdit';
+import '../src/screens/followers';
 import { addObserver, appState } from '../src/store/store';
 import { Screens } from '../src/types/store';
 
@@ -48,6 +51,16 @@ class AppContainer extends HTMLElement {
 				case Screens.PROFILE:
 					const perfil = this.ownerDocument.createElement('app-perfil');
 						this.shadowRoot.appendChild(perfil);
+					break
+
+				case Screens.PROFILEEDIT:
+					const profileEdit = this.ownerDocument.createElement('app-profiledit');
+					this.shadowRoot.appendChild(profileEdit);
+					break
+
+				case Screens.FOLLOWS:
+					const followers = this.ownerDocument.createElement('app-followers');
+					this.shadowRoot.appendChild(followers);
 					break
 				default:
 			}
