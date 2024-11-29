@@ -1,13 +1,14 @@
 import { Product } from '../../types/product';
 import '../../components/ReviewCard/reviewcard'
 import ReviewCard from '../../components/ReviewCard/reviewcard';
-import { Attribute } from '../../types/product';
+import { Attribute2 } from '../../types/product';
 import { credentials } from '../../types/product';
 import { review } from '../../types/product';
 import { getUser } from '../../utils/Firebase';
 import { getFile } from '../../utils/Firebase';
 import { getProducts } from '../../utils/Firebase';
 import { AppState } from '../../types/store';
+import '../CreatePost/createPost';
 
 
 import '../../components/Dashboard/nav'
@@ -45,10 +46,8 @@ class Dashboard extends HTMLElement {
                 <link rel="stylesheet" href="../src/styles.css">
                 <nav-component></nav-component>
                 <responsive-nav></responsive-nav>
-                <section id="secCards">
-                    <div class="underSec">
-                    </div>
-                </section>
+                <create-post></create-post>
+
             `;
     
             const secCards = this.shadowRoot.querySelector("#secCards");
@@ -84,12 +83,12 @@ class Dashboard extends HTMLElement {
            
                         
             const reviewCard = this.ownerDocument.createElement("review-component") as ReviewCard;
-            reviewCard.setAttribute(Attribute.user, name);
-            reviewCard.setAttribute(Attribute.bio, bio);
-            reviewCard.setAttribute(Attribute.imagecover, review.imagecover);
-            reviewCard.setAttribute(Attribute.titlereview, review.name);
-            reviewCard.setAttribute(Attribute.rating, review.rating);
-            reviewCard.setAttribute(Attribute.dateadded, review.dateadded);
+            reviewCard.setAttribute(Attribute2.user, name);
+            reviewCard.setAttribute(Attribute2.bio, bio);
+            reviewCard.setAttribute(Attribute2.imagecover, review.imagecover);
+            reviewCard.setAttribute(Attribute2.titlereview, review.name);
+            reviewCard.setAttribute(Attribute2.rating, review.rating);
+            reviewCard.setAttribute(Attribute2.dateadded, review.dateadded);
             this.arrayReview.push(reviewCard); 
 
     

@@ -54,24 +54,6 @@ class Nav extends HTMLElement {
                     dispatch(navigate(Screens.DASHBOARD)); 
                 });
 
-                const createButton = this.ownerDocument.createElement("btn-component") as Button;
-                createButton.setAttribute("color", "#5D3B94");
-                createButton.setAttribute("label", "Create");
-                createButton.setAttribute("textColor", "white");
-    
-                createButton?.addEventListener('click', () => {
-                    dispatch(navigate(Screens.FORMREVIEW));
-                });
-
-                const searchButton = this.ownerDocument.createElement("btn-component") as Button;
-                searchButton.setAttribute("color", "white");
-                searchButton.setAttribute("label", "Search");
-                searchButton.setAttribute("textColor", "#5D3B94");
-    
-                searchButton?.addEventListener('click', () => {
-                    dispatch(navigate(Screens.DASHBOARD));
-                });
-
                 const favoritesButton = this.ownerDocument.createElement("btn-component") as Button;
                 favoritesButton.setAttribute("color", "white");
                 favoritesButton.setAttribute("label", "Favorites");
@@ -82,9 +64,9 @@ class Nav extends HTMLElement {
                 });
 
                 const LogoutButton = this.ownerDocument.createElement("btn-component") as Button;
-                LogoutButton.setAttribute("color", "white");
+                LogoutButton.setAttribute("color", "#5D3B94");
                 LogoutButton.setAttribute("label", "LogOut");
-                LogoutButton.setAttribute("textColor", "#5D3B94");
+                LogoutButton.setAttribute("textColor", "white");
 
                 LogoutButton.addEventListener('click', this.logout);
     
@@ -95,8 +77,6 @@ class Nav extends HTMLElement {
                 });
 
                 containerBtn.appendChild(favoritesButton)
-                containerBtn.appendChild(searchButton)
-                containerBtn.appendChild(createButton);
                 containerBtn.appendChild(LogoutButton);
                 sec.appendChild(containerBtn)
                 pushContainerBtn.appendChild(sec)
