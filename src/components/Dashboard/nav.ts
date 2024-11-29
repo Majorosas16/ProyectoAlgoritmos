@@ -38,9 +38,15 @@ class Nav extends HTMLElement {
             const containerBtn = this.shadowRoot.querySelector("#nav-buttons")
             const pushContainerBtn = this.shadowRoot.querySelector(".navbar")
             const sec = this.shadowRoot.querySelector(".sec")
-            const profile = this.shadowRoot.querySelector(".profile")
+            const profile = this.shadowRoot.querySelector(".profile");
+            const logo = this.shadowRoot.querySelector(".logo")
 
-            if (containerBtn && pushContainerBtn && sec && profile) {
+            if (containerBtn && pushContainerBtn && sec && profile && logo) {
+
+                logo.addEventListener('click', () => {
+                    console.log("Logo profile clicked");
+                    dispatch(navigate(Screens.DASHBOARD)); 
+                });
 
                 const createButton = this.ownerDocument.createElement("btn-component") as Button;
                 createButton.setAttribute("color", "#5D3B94");

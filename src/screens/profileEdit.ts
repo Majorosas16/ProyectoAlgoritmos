@@ -32,9 +32,10 @@ class PerfilEdit extends HTMLElement {
     async render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="../src/screens/favoritos.css">
+                <link rel="stylesheet" href="../src/screens/profileEdit.css">
                 <nav-component></nav-component>
-
+                <body>
+                <section class="contenedor">
                 <div class="img-perfil"></div>
                 <div class="inputs">
                     <div class="inputs-name">
@@ -61,8 +62,13 @@ class PerfilEdit extends HTMLElement {
                     <a>Change password</a>
                     <input type="password" placeholder="Password" class="password">
                     </div>
+                    <div class="guardar">
+                    <button>Save</button>
+                    </div>
 				</div>
-                <button>Cerrar perfil</button>
+                </section>
+                </body>
+                
             `;}
         
             }
