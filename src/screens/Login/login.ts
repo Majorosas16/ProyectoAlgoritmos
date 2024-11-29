@@ -34,7 +34,7 @@ class Login extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
 			
-			<link rel="stylesheet" href="../src/screens/loginStyle.css">
+			<link rel="stylesheet" href="../src/screens/Login/loginStyle.css">
 				<section class="container">
 				<div class="form-section">
 					<div class="responsive-image-container">
@@ -59,7 +59,7 @@ class Login extends HTMLElement {
 						<input type="checkbox" id="rememberMe" class="remember-checkbox">
 						<label for="rememberMe" class="remember-label">Remember me</label>
 					</div>
-					<button id="save" class="iniciarSesion">Sing in</button>
+					<button id="save" class="iniciarSesion">Sign in</button>
 					
 					<hr class="divider">
 					<p class="or-sign-in">or sign in with</p>
