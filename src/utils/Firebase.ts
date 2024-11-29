@@ -168,6 +168,20 @@ export const uploadFile = async (file: File, id: string) => {
     });
 };
 
+export const uploadFileProfile = async (file: File, id: string) => {
+    const { storage } = await getFirebaseInstance();
+    const { ref, uploadBytes } = await import('firebase/storage');
+
+    const storageRef = ref(storage, 'imagesProfile/' + id);
+	uploadBytes(storageRef, file).then((snapshot) => {
+		console.log('File uploaded');
+	});
+
+    await uploadBytes(storageRef, file).then((snapshot) => {
+        console.log('File uploaded');
+    });
+};
+
 // export const getFile = async (id: string): Promise<string | null> => {
 //     const { storage } = await getFirebaseInstance();
 //     const { ref, getDownloadURL } = await import('firebase/storage');
@@ -198,6 +212,20 @@ export const getFile = async (id: string) => {
 	return urlImg;
 };
 
+export const getFilePerfil = async (id: string) => {
+	const { storage } = await getFirebaseInstance();
+    const { ref, getDownloadURL } = await import('firebase/storage');
+	const storageRef = ref(storage, 'imagesProfile/' + id);
+	const urlImg = await getDownloadURL(ref(storageRef))
+		.then((url) => {
+			return url;
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+	return urlImg;
+};
+
 export const getFiles = async (id: string): Promise<string[]> => {
     const { storage } = await getFirebaseInstance();
     const { ref, listAll, getDownloadURL } = await import('firebase/storage');
@@ -218,6 +246,18 @@ export const getFiles = async (id: string): Promise<string[]> => {
 		}
 };
 
-
+export const getFileProfile = async (id: string) => {
+	const { storage } = await getFirebaseInstance();
+    const { ref, getDownloadURL } = await import('firebase/storage');
+	const storageRef = ref(storage, 'imagesProfile/' + id);
+	const urlImg = await getDownloadURL(ref(storageRef))
+		.then((url) => {
+			return url;
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+	return urlImg;
+};
 
 
