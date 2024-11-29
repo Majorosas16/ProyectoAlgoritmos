@@ -49,18 +49,16 @@ class Dashboard extends HTMLElement {
                     <div class="underSec">
                     </div>
                 </section>
-                <button>Cerrar perfil</button>
-
             `;
     
             const secCards = this.shadowRoot.querySelector("#secCards");
             const container = document.createElement('div');
             container.classList.add('containerCards');
             
-            const logoutBtn = this.ownerDocument.createElement('button');
-            logoutBtn.innerText = 'Logout';
-            logoutBtn.addEventListener('click', this.logout);
-            this.shadowRoot?.appendChild(logoutBtn);
+            // const logoutBtn = this.ownerDocument.createElement('button');
+            // logoutBtn.innerText = 'Logout';
+            // logoutBtn.addEventListener('click', this.logout);
+            // this.shadowRoot?.appendChild(logoutBtn);
             
             const reviews = await getProducts();  // referencia de la data de reviews en Firebase
             const user = await getUser(appState.user); // referencia de la data de usuarios en Firebase
