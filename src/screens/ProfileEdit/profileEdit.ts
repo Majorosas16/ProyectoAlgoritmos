@@ -22,6 +22,12 @@ class PerfilEdit extends HTMLElement {
         addObserver(this);
     }
 
+    // changeImage(event: any) {
+    //     console.log(event);
+        
+    //     const file = 
+    // } 
+
     logout() {
 		indexedDB.deleteDatabase('firebase-heartbeat-database');
 		indexedDB.deleteDatabase('firebaseLocalStorageDb');
@@ -34,48 +40,14 @@ class PerfilEdit extends HTMLElement {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="../src/screens/profileEdit.css">
                 <nav-component></nav-component>
-                <body>
-                <section class="contenedor">
-                <div class="img-perfil"></div>
-                <div class="input-img">
-                <input type="file" class="name">
-                </div>
-                <div class="inputs">
-                    <div class="inputs-name">
-                    <a>Name</a>
-                    <input type="text" placeholder="Name" class="name">
-                    </div>
-
-                    <div class="inputs-username">
-                    <a>Username</a>
-                    <input type="text" placeholder="Username" class="username">
-                    </div>
-
-                    <div class="inputs-email">
-                    <a>Email</a>
-                    <input type="email" placeholder="Email" class="email">
-                    </div>
-
-                    <div class="inputs-bio">
-                    <a>Change biography</a>
-                    <input type="text" placeholder="Biography: “Superhero Fan”" class="bio">
-                    </div>
-
-                    <div class="inputs-password">
-                    <a>Change password</a>
-                    <input type="password" placeholder="Password" class="password">
-                    </div>
-                    <div class="guardar">
-                    <button>Save</button>
-                    </div>
-				</div>
-                </section>
-                </body>
                 
             `;}
 
+            // const pImage = this.ownerDocument.querySelector('input');
+            // pImage.type = 'file';
+            // pImage?.addEventListener('change', this.changeImage);
+            // this.shadowRoot?.appendChild(pImage);
 
-        
             }
 }
 

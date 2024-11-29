@@ -16,6 +16,12 @@ class Nav extends HTMLElement {
         this.render();
     }
 
+    logout() {
+		indexedDB.deleteDatabase('firebase-heartbeat-database');
+		indexedDB.deleteDatabase('firebaseLocalStorageDb');
+		window.location.reload();
+    }
+    
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
@@ -75,6 +81,14 @@ class Nav extends HTMLElement {
                     dispatch(navigate(Screens.FAVORITOS));
                 });
 
+                const LogoutButton = this.ownerDocument.createElement("btn-component") as Button;
+                LogoutButton.setAttribute("color", "white");
+                LogoutButton.setAttribute("label", "LogOut");
+                LogoutButton.setAttribute("textColor", "#5D3B94");
+
+                LogoutButton.addEventListener('click', this.logout);
+    
+
                 profile.addEventListener('click', () => {
                     console.log("Profile clicked");
                     dispatch(navigate(Screens.PROFILE)); 
@@ -83,6 +97,7 @@ class Nav extends HTMLElement {
                 containerBtn.appendChild(favoritesButton)
                 containerBtn.appendChild(searchButton)
                 containerBtn.appendChild(createButton);
+                containerBtn.appendChild(LogoutButton);
                 sec.appendChild(containerBtn)
                 pushContainerBtn.appendChild(sec)
                 pushContainerBtn.appendChild(profile)

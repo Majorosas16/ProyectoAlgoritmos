@@ -1,10 +1,11 @@
 button {
-    padding: 10px 20px;
+    padding: 10px 30px;
     border-left: 2px solid #000000;
     border-top: 2px solid #000000; 
     border-bottom: 4px solid #000000; 
     border-right: 4px solid #000000; 
     border-radius: 10px;
+    width: auto;
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
